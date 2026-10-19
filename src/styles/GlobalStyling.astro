@@ -1,0 +1,33 @@
+<style is:global is:inline>
+    :root {
+        --color-primary: #091020;
+        --color-secondary: #0d1726;
+        --accent-color: #7cc6fe;
+        --accent-color-transparent: rgba(124, 198, 254, 0.1);
+
+        --border-color: #202c3e;
+        --text-color-primary: #e8eef6;
+        --text-color-secondary: #8e9bae;
+        --text-color-tertiary: #a7b3c5;
+
+        --global-padding-mobile: 1.25rem;
+
+        --gradient-secondary: linear-gradient(
+            130deg,
+            rgba(16, 28, 43, 0.85),
+            rgba(13, 23, 38, 0.85)
+        );
+    }
+
+    body {
+        background-color: var(--color-primary);
+    }
+
+    @media screen and (min-width: 300px) {
+        header,
+        footer,
+        main {
+            padding: var(--global-padding-mobile);
+        }
+    }
+</style>

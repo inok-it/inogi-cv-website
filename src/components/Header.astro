@@ -1,0 +1,406 @@
+---
+import Image from "astro/components/Image.astro";
+import Logo from "../assets/Inogi_logo_DARK_BG.svg";
+---
+
+<header>
+    <div class="logo">
+        <Image src={Logo} alt="Logo" class="logo-img" />
+
+        <div class="logo-text">
+            <span>INOGI</span>
+
+            <span>IT SUPPORT & SYSADMIN</span>
+        </div>
+    </div>
+
+    <menu class="menu-pc">
+        <li><a href="#">O mnie</a></li>
+
+        <li><a href="#">Kompetencje</a></li>
+
+        <li><a href="#">Homelab & Projekty</a></li>
+
+        <li><a href="#">Stack</a></li>
+
+        <li><a href="#">Doświadczenie</a></li>
+
+        <li><a href="#">Kontakt</a></li>
+    </menu>
+    <div class="button-wrapper">
+        <button class="download-btn hide-download-btn-less-than-500px"
+            ><svg
+                width="13"
+                height="18"
+                viewBox="0 0 13 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M11.375 10.625V12.7917C11.375 13.079 11.2609 13.3545 11.0577 13.5577C10.8545 13.7609 10.579 13.875 10.2917 13.875H2.70833C2.42102 13.875 2.14547 13.7609 1.9423 13.5577C1.73914 13.3545 1.625 13.079 1.625 12.7917V10.625"
+                    stroke-width="0.920833"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="#E8EEF6"></path>
+
+                <path
+                    d="M3.79167 7.91675L6.5 10.6251L9.20833 7.91675"
+                    stroke-width="0.920833"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="#E8EEF6"></path>
+
+                <path
+                    d="M6.5 10.625V4.125"
+                    stroke-width="0.920833"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="#E8EEF6"></path>
+            </svg>
+
+            Pobierz CV <span>(PDF)</span></button
+        >
+
+        <button class="menu-btn"
+            ><svg
+                width="13"
+                height="18"
+                viewBox="0 0 13 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M2.16667 9H10.8333"
+                    stroke-width="0.920833"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="var(--text-color-primary)"></path>
+
+                <path
+                    d="
+
+M2.16667
+
+5.75H10.8333"
+                    stroke-width="0.920833"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="var(--text-color-primary)"></path>
+
+                <path
+                    d="
+
+M2.16667
+
+12.25H10.8333"
+                    stroke-width="0.920833"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="var(--text-color-primary)"></path>
+            </svg>
+        </button>
+    </div>
+
+    <menu class="menu-mobile">
+        <li><a href="#">O mnie</a></li>
+
+        <li><a href="#">Kompetencje</a></li>
+
+        <li><a href="#">Homelab & Projekty</a></li>
+
+        <li><a href="#">Stack technologiczny</a></li>
+
+        <li><a href="#">Doświadczenie</a></li>
+
+        <li><a href="#">Kontakt</a></li>
+
+        <button class="download-btn hide-download-btn-more-than-500px"
+            ><svg
+                width="13"
+                height="18"
+                viewBox="0 0 13 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M11.375 10.625V12.7917C11.375 13.079 11.2609 13.3545 11.0577 13.5577C10.8545 13.7609 10.579 13.875 10.2917 13.875H2.70833C2.42102 13.875 2.14547 13.7609 1.9423 13.5577C1.73914 13.3545 1.625 13.079 1.625 12.7917V10.625"
+                    stroke-width="0.920833"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="#E8EEF6"></path>
+
+                <path
+                    d="M3.79167 7.91675L6.5 10.6251L9.20833 7.91675"
+                    stroke-width="0.920833"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="#E8EEF6"></path>
+
+                <path
+                    d="M6.5 10.625V4.125"
+                    stroke-width="0.920833"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="#E8EEF6"></path>
+            </svg>
+
+            Pobierz CV <span>(PDF)</span></button
+        >
+    </menu>
+</header>
+
+<style>
+    header {
+        width: 100%;
+
+        position: sticky;
+
+        display: flex;
+
+        gap: 1rem;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        padding-block: 1rem;
+
+        border-bottom: 2px solid var(--border-color);
+
+        .logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+            .logo-img {
+                width: auto;
+
+                height: 4rem;
+            }
+
+            .logo-text {
+                display: flex;
+
+                flex-direction: column;
+
+                gap: 0.25rem;
+
+                span:first-of-type {
+                    font-size: 1.5rem;
+
+                    font-weight: 700;
+
+                    letter-spacing: 4px;
+
+                    color: var(--text-color-primary);
+                }
+
+                span:last-of-type {
+                    font-size: 0.75rem;
+
+                    font-weight: 400;
+
+                    letter-spacing: 2px;
+
+                    color: var(--text-color-secondary);
+                }
+            }
+        }
+
+        .menu-btn {
+            background: none;
+
+            border: 2px solid var(--border-color);
+
+            cursor: pointer;
+
+            border-radius: 10px;
+
+            height: 3rem;
+
+            width: 3rem;
+
+            svg {
+                width: 100%;
+
+                height: 100%;
+            }
+        }
+    }
+
+    .menu-mobile {
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+
+        left: 0;
+
+        width: inherit;
+
+        list-style: none;
+
+        margin: 0;
+
+        padding: 0;
+
+        border-top: 1px solid var(--border-color);
+
+        border-bottom: 2px solid var(--border-color);
+
+        background-image: var(--gradient-secondary);
+
+        li {
+            margin-inline: 1.25rem;
+
+            padding-block: 1.25rem;
+
+            cursor: pointer;
+
+            a {
+                text-decoration: none;
+
+                color: var(--text-color-primary);
+            }
+        }
+
+        li:not(:last-of-type) {
+            border-bottom: 2px solid var(--border-color);
+        }
+    }
+
+    .download-btn {
+        display: flex;
+
+        align-items: center;
+
+        gap: 0.5rem;
+
+        height: 3rem;
+
+        background: none;
+
+        border: 2px solid var(--border-color);
+
+        cursor: pointer;
+
+        border-radius: 10px;
+
+        padding: 0.5rem 0.75rem;
+
+        font-weight: 500;
+
+        margin-bottom: 1rem;
+
+        margin-inline: auto;
+
+        color: var(--text-color-primary);
+
+        font-size: 0.875rem;
+        white-space: nowrap;
+
+        transition: all 0.2s ease;
+
+        svg {
+            width: 1.5rem;
+
+            height: 1.5rem;
+        }
+
+        span {
+            font-size: 0.75rem;
+            color: var(--text-color-secondary);
+        }
+    }
+
+    .download-btn:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent-color);
+        background-color: var(--accent-color-transparent);
+    }
+
+    .button-wrapper {
+        display: flex;
+
+        gap: 1rem;
+    }
+
+    .show-menu {
+        display: block;
+    }
+
+    .menu-pc {
+        display: none;
+        width: auto;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        gap: 1rem;
+        height: 3rem;
+        li {
+            display: block;
+            cursor: pointer;
+            height: 100%;
+            text-align: center;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-decoration: none;
+            color: var(--text-color-tertiary);
+            white-space: nowrap;
+
+            transition: color 0.2s ease-in-out;
+        }
+    }
+
+    .menu-pc > li > a:hover {
+        color: var(--accent-color);
+    }
+
+    @media screen and (min-width: 500px) {
+        .hide-download-btn-more-than-500px {
+            display: none !important;
+        }
+
+        .download-btn {
+            margin-bottom: 0;
+
+            margin-inline: 0;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .hide-download-btn-less-than-500px {
+            display: none !important;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .menu-btn {
+            display: none;
+        }
+        .menu-pc {
+            display: flex;
+        }
+    }
+</style>
+
+<script>
+    const menuBtn = document.querySelector(".menu-btn");
+
+    const menu = document.querySelector(".menu-mobile");
+
+    if (menuBtn && menu) {
+        menuBtn.addEventListener("click", () => {
+            menu.classList.toggle("show-menu");
+        });
+    }
+</script>
