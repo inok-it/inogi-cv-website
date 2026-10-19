@@ -1,0 +1,50 @@
+---
+
+---
+
+<menu class="menu-pc">
+    <li><a href="#">O mnie</a></li>
+    <li><a href="#">Kompetencje</a></li>
+    <li><a href="#">Homelab & Projekty</a></li>
+    <li><a href="#">Stack</a></li>
+    <li><a href="#">Doświadczenie</a></li>
+    <li><a href="#">Kontakt</a></li>
+</menu>
+
+<style>
+    .menu-pc {
+        display: none;
+        width: auto;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        gap: 1rem;
+        height: 3rem;
+    }
+    .menu-pc li {
+        display: block;
+        cursor: pointer;
+        height: 100%;
+        text-align: center;
+    }
+    .menu-pc a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-decoration: none;
+        color: var(--text-color-tertiary);
+        white-space: nowrap;
+        transition: color 0.2s ease-in-out;
+    }
+    .menu-pc > li > a:hover {
+        color: var(--accent-color);
+    }
+
+    @media screen and (min-width: 1024px) {
+        .menu-pc {
+            display: flex;
+        }
+    }
+</style>

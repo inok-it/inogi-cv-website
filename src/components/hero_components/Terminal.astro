@@ -1,0 +1,201 @@
+<div class="terminal">
+    <div class="terminal-nav">
+        <div class="circle-container">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <p>inogi@homelab: ~</p>
+        <p>>_</p>
+    </div>
+    <div class="terminal-window">
+        <div class="command-block">
+            <p class="route">
+                inogi@homelab<span class="pwd">:~$</span><span class="command">
+                    &ensp;whoami</span
+                >
+            </p>
+            <p class="first-command-result">
+                IT&ensp;Support&ensp;Specialist&ensp;&&ensp;Linux&ensp;Administrator
+                <br />
+                <span>Ciekawość.&ensp;Diagnostyka.&ensp;Rozwiązanie.</span>
+            </p>
+        </div>
+
+        <div class="command-block">
+            <p class="route">
+                inogi@homelab<span class="pwd">:~$</span><span class="command">
+                    &ensp;cat&ensp;skills.txt</span
+                >
+            </p>
+            <div class="second-command-result">
+                <div class="skill-container">
+                    <p class="skill"><span>✓</span>&ensp;Linux & Windows</p>
+                    <p class="skill"><span>✓</span>&ensp;Bash & automation</p>
+                </div>
+                <div class="skill-container">
+                    <p class="skill"><span>✓</span>&ensp;Docker & networking</p>
+                    <p class="skill">
+                        <span>✓</span>&ensp;Security & monitoring
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="command-block">
+            <p class="route">
+                inogi@homelab<span class="pwd">:~$</span><span class="command">
+                    &ensp;uptime&ensp;--mindset</span
+                >
+            </p>
+            <p class="third-command-result">
+                Proaktywnie.&ensp;Stabilnie.&ensp;Bez&ensp;zbędnych&ensp;przestojów.&ensp;
+            </p>
+        </div>
+
+        <div class="command-block">
+            <p class="route">
+                inogi@homelab<span class="pwd">:~$</span><span class="command">
+                    &ensp;systemctl&ensp;status&ensp;career</span
+                >
+            </p>
+            <p class="fourth-command-result">
+                <span class="circle-service">
+                </span>career.service&ensp;—&ensp;ready&ensp;for&ensp;the&ensp;next
+                challenge
+                <br /><span>Active:</span
+                >&ensp;active&ensp;(open&ensp;to&ensp;work)
+            </p>
+        </div>
+
+        <div class="command-block">
+            <p class="route add-block-cmd">
+                inogi@homelab<span class="pwd">:~$</span>
+                &ensp;<span class="block-cmd"></span>
+            </p>
+        </div>
+    </div>
+</div>
+<!-- <div class="status-terminal"></div> -->
+
+<style>
+    .terminal {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        border: 2px solid #2a3c50;
+    }
+    .terminal-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #111c2b;
+        height: auto;
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+        padding: 1rem 1.5rem;
+        border-bottom: 2px solid #2a3c50;
+    }
+    p {
+        font-size: 14px;
+    }
+    .terminal-nav > p {
+        color: #75869b;
+    }
+    .circle-container {
+        display: flex;
+        gap: 0.5rem;
+    }
+    .circle {
+        border-radius: 50%;
+        width: 0.75rem;
+        height: 0.75rem;
+    }
+    .circle:nth-child(1) {
+        background-color: #f27c7b;
+    }
+    .circle:nth-child(2) {
+        background-color: #e7bd68;
+    }
+    .circle:nth-child(3) {
+        background-color: #67c398;
+    }
+
+    .terminal-window {
+        padding: 1rem 1.25rem;
+    }
+
+    .route {
+        color: #6ccfa6;
+        padding-bottom: 1rem;
+    }
+    .pwd {
+        color: #5d708b;
+    }
+    .command {
+        color: #e3eaf4;
+    }
+    .block-cmd {
+        width: 0.5rem;
+        height: 0.875rem;
+        background-color: #e3eaf4d1;
+    }
+    .add-block-cmd {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    .command-block:not(:last-of-type) {
+        margin-bottom: 2rem;
+    }
+    .first-command-result {
+        color: #c9d5e5;
+        line-height: 25px;
+
+        > span {
+            color: #5d708b;
+        }
+    }
+    .second-command-result {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        white-space: nowrap;
+        width: 100%;
+        gap: 1rem;
+        color: #75869b;
+
+        span {
+            color: #7cc6fe;
+        }
+    }
+    .third-command-result {
+        color: #75869b;
+    }
+    .skill-container {
+        flex: 1 1 10rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-right: 1rem;
+    }
+    .fourth-command-result {
+        color: #6edab0;
+        line-height: 18px;
+        > span:last-of-type {
+            color: #75869b;
+        }
+    }
+
+    .circle-service {
+        display: inline-block;
+        border-radius: 50%;
+        width: 0.625rem;
+        height: 0.625rem;
+        background-color: #6edab0;
+        margin-right: 0.5rem;
+    }
+</style>

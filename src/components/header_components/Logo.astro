@@ -1,0 +1,41 @@
+---
+import Image from "astro/components/Image.astro";
+import LogoImg from "../../assets/Inogi_logo_DARK_BG.svg";
+---
+
+<div class="logo">
+    <Image src={LogoImg} alt="Logo" class="logo-img" />
+    <div class="logo-text">
+        <span>INOGI</span>
+        <span>IT SUPPORT & SYSADMIN</span>
+    </div>
+</div>
+
+<style>
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .logo-img {
+        width: auto;
+        height: 4rem;
+    }
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    .logo-text span:first-of-type {
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 4px;
+        color: var(--text-color-primary);
+    }
+    .logo-text span:last-of-type {
+        font-size: 0.75rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+        color: var(--text-color-secondary);
+    }
+</style>

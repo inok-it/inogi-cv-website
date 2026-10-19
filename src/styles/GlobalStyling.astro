@@ -9,7 +9,7 @@
         --text-color-primary: #e8eef6;
         --text-color-secondary: #8e9bae;
         --text-color-tertiary: #a7b3c5;
-
+        --text-color-four: #7e8ca1;
         --global-padding-mobile: 1.25rem;
 
         --gradient-secondary: linear-gradient(
@@ -21,8 +21,14 @@
 
     body {
         background-color: var(--color-primary);
+        min-height: 100svh;
+        width: 100vw;
     }
 
+    main,
+    section {
+        width: 100vw;
+    }
     @media screen and (min-width: 300px) {
         header,
         footer,

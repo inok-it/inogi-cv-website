@@ -1,0 +1,56 @@
+---
+import Tags from "./hero_components/Tags.astro";
+import Icons from "./hero_components/SmIcons.astro";
+import CTA from "./hero_components/CTA.astro";
+import Paragraph from "./hero_components/HeroP.astro";
+import Header from "./hero_components/Header.astro";
+import Tags2 from "./hero_components/Tags2.astro";
+import Status from "./hero_components/Status.astro";
+import Terminal from "./hero_components/Terminal.astro";
+---
+
+<section>
+    <div class="hero-content">
+        <Status />
+        <Tags2 />
+        <Header />
+        <Paragraph />
+        <div class="hero-actions">
+            <CTA />
+            <Icons />
+        </div>
+        <Tags />
+    </div>
+    <div class="hero-terminal">
+        <Terminal />
+    </div>
+</section>
+
+<style>
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .hero-content {
+        width: auto;
+        height: auto;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-terminal {
+        width: 100%;
+    }
+</style>
