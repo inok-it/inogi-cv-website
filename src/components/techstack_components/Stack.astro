@@ -1,0 +1,70 @@
+---
+interface Props {
+    icon: string;
+    title: string;
+    tags: string[];
+}
+
+const { icon, title, tags } = Astro.props;
+---
+
+<div class="skill-stack">
+    <div class="title-and-icon-wrapper">
+        <div class="icon-wrapper" set:html={icon} />
+        <h3>{title}</h3>
+    </div>
+    <ul class="tags">
+        {tags.map((tag) => <li class="tag">{tag}</li>)}
+    </ul>
+</div>
+
+<style>
+    .skill-stack {
+        width: 100%;
+        height: auto;
+        max-width: 18rem;
+        border-radius: 10px;
+        border: 2px solid #233044;
+        background-color: #101c2b;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .title-and-icon-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.5rem;
+    }
+    h3 {
+        line-height: 18px;
+        color: #d4deeb;
+        letter-spacing: -0.5px;
+    }
+    /* .icon-wrapper {
+        padding: 0.5rem;
+    } */
+
+    .tags {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .tag {
+        color: #99adc6;
+        padding: 0.5rem;
+        font-size: 12px;
+        background-color: #142033;
+        border: 2px solid #28364a;
+        border-radius: 5px;
+    }
+</style>
