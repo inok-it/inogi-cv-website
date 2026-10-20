@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import GlobalStyling from "../styles/GlobalStyling.astro";
 import ResetStyling from "../styles/ResetStyling.astro";
 import HeroSection from "../components/HeroSection.astro";
+import Skills from "../components/Skills.astro";
 import Footer from "../components/Footer.astro";
 ---
 
@@ -13,6 +14,15 @@ import Footer from "../components/Footer.astro";
 	<Header />
 	<main>
 		<HeroSection />
+		<Skills />
 	</main>
 	<Footer />
 </Layout>
+
+<style>
+	main {
+		display: flex;
+		flex-direction: column;
+		gap: 4rem;
+	}
+</style>

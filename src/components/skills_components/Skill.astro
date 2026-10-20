@@ -1,0 +1,123 @@
+---
+interface Props {
+    icon: string;
+    title: string;
+    skill_count: string;
+    paragraph: string;
+    tags: string[];
+    summary: string;
+}
+
+const { icon, title, skill_count, paragraph, tags, summary } = Astro.props;
+---
+
+<article class="card">
+    <header class="card-header">
+        <div class="icon-wrapper" set:html={icon} />
+        <span class="skill-count">{skill_count}</span>
+    </header>
+
+    <h3>{title}</h3>
+
+    <p class="description">{paragraph}</p>
+
+    <ul class="tags">
+        {tags.map((tag) => <li class="tag">{tag}</li>)}
+    </ul>
+
+    <footer class="summary">
+        <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+        >
+            <path
+                d="M20 6L9 17l-5-5"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+        </svg>
+        <span>{summary}</span>
+    </footer>
+</article>
+
+<style>
+    article {
+        width: 100%;
+        height: auto;
+        max-width: 26rem;
+        border-radius: 10px;
+        border: 2px solid #233044;
+        background-color: #101c2b;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .icon-wrapper {
+            padding: 0.5rem;
+            background-color: #142a3d;
+            border-radius: 8px;
+            border: 2px solid #29435a;
+        }
+
+        .skill-count {
+            color: #53677f;
+            font-size: 12px;
+        }
+    }
+
+    h3 {
+        line-height: 22.5px;
+        letter-spacing: -0.5px;
+        color: #eaf0f8;
+        margin-bottom: -1rem;
+    }
+    .description {
+        color: #8b9bb0;
+        line-height: 23px;
+        font-size: 14px;
+    }
+
+    .tags {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .tag {
+        color: #99adc6;
+        padding: 0.5rem;
+        font-size: 12px;
+        background-color: #142033;
+        border: 2px solid #28364a;
+        border-radius: 5px;
+    }
+
+    footer {
+        color: #6f91ab;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    footer > svg {
+        margin-right: 0.5rem;
+        color: #6f91ab;
+    }
+</style>
