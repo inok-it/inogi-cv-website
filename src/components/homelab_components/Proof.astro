@@ -1,0 +1,128 @@
+---
+import ProofHeader from "./ProofHeader.astro";
+
+interface Props {
+    headerTags: string[];
+    title: string;
+    newLineTitle: string;
+    challenge: string;
+    solution: string;
+    tags: string[];
+
+    headerType: "no-code" | "code";
+    statusTag: string;
+    lab: string;
+    iconSet: 1 | 2 | null;
+}
+
+const {
+    headerTags,
+    title,
+    newLineTitle,
+    challenge,
+    solution,
+    tags,
+    headerType,
+    statusTag,
+    lab,
+    iconSet,
+} = Astro.props;
+---
+
+<article>
+    <ProofHeader
+        headerType={headerType}
+        statusTag={statusTag}
+        lab={lab}
+        iconSet={iconSet}
+    />
+    <div class="proof-wraper">
+        <p class="header-tags-homelab">
+            {headerTags[0]}&ensp;·&ensp;{headerTags[1]}&ensp;·&ensp;{
+                headerTags[2]
+            }
+        </p>
+        <h3>{title}<br /> {newLineTitle}</h3>
+        <p class="solution">
+            <span class="bolder">Wyzwanie: </span>{challenge}<br />
+            <span class="bolder">Rozwiązanie: </span>{solution}
+        </p>
+        <ul class="tags-homelab">
+            {tags.map((tag) => <li class="tag-homelab">{tag}</li>)}
+        </ul>
+        <footer>
+            <a href=""></a>
+        </footer>
+    </div>
+</article>
+
+<style>
+    article {
+        max-width: 25rem;
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        background-color: #101c2b;
+        border-radius: 10px;
+        border: 2px solid #233044;
+    }
+    header {
+        height: 12rem;
+        width: 100%;
+        border-radius: 10px 10px 0px 0px;
+        background-color: #0b1422;
+    }
+    .header-tags-homelab {
+        font-size: 12px;
+        color: #6e93b2;
+        letter-spacing: 1px;
+    }
+    h3 {
+        line-height: 24px;
+        letter-spacing: -0.3px;
+        color: #eaf0f8;
+    }
+    .solution {
+        color: #8b9bb0;
+    }
+    .bolder {
+        font-weight: bolder;
+        color: #8e9bae;
+    }
+
+    .tags-homelab {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .tag-homelab {
+        color: #99adc6;
+        padding: 0.5rem;
+        font-size: 12px;
+        background-color: #142033;
+        border: 2px solid #28364a;
+        border-radius: 5px;
+    }
+    .proof-wraper {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1rem;
+        border-top: 2px solid #28364a;
+    }
+
+    .solution {
+        line-height: 23px;
+    }
+</style>

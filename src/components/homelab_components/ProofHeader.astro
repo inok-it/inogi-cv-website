@@ -1,0 +1,346 @@
+---
+interface Props {
+    headerType: "no-code" | "code";
+    iconSet: 1 | 2 | null;
+    statusTag: string;
+    lab: string;
+}
+
+const { headerType, statusTag, lab, iconSet } = Astro.props;
+---
+
+<header>
+    <div class="proof-status-wrapper">
+        <div class="proof-status">
+            <span class="proof-circle"></span>
+            {statusTag}
+        </div>
+        <p>{lab}</p>
+    </div>
+    {
+        headerType === "no-code" ? (
+            <div class="no-code-block-wrapper">
+                <div class="no-code-block">
+                    {iconSet === 1 ? (
+                        <svg
+                            width="22"
+                            height="22"
+                            viewBox="0 0 22 22"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M20.1667 11C20.1667 16.0626 16.0626 20.1666 11 20.1666C5.93739 20.1666 1.83334 16.0626 1.83334 11C1.83334 5.93737 5.93739 1.83331 11 1.83331C16.0626 1.83331 20.1667 5.93737 20.1667 11Z"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                            <path
+                                d="M11 1.83331C8.64622 4.30479 7.33334 7.58699 7.33334 11C7.33334 14.413 8.64622 17.6952 11 20.1666C13.3538 17.6952 14.6667 14.413 14.6667 11C14.6667 7.58699 13.3538 4.30479 11 1.83331Z"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                            <path
+                                d="M1.83334 11H20.1667"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                        </svg>
+                                            <p>Internet</p>
+
+                    ) : iconSet === 2 ? (
+                        <svg
+                            width="22"
+                            height="22"
+                            viewBox="0 0 22 22"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M14.6667 19.25V17.4167C14.6667 16.4442 14.2804 15.5116 13.5927 14.8239C12.9051 14.1363 11.9725 13.75 11 13.75H5.5C4.52754 13.75 3.59491 14.1363 2.90728 14.8239C2.21964 15.5116 1.83334 16.4442 1.83334 17.4167V19.25"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                            <path
+                                d="M11.9167 6.41667C11.9167 8.44171 10.275 10.0833 8.25 10.0833C6.22496 10.0833 4.58334 8.44171 4.58334 6.41667C4.58334 4.39162 6.22496 2.75 8.25 2.75C10.275 2.75 11.9167 4.39162 11.9167 6.41667Z"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                            <path
+                                d="M20.1667 19.25V17.4167C20.1661 16.6043 19.8957 15.815 19.3979 15.173C18.9002 14.5309 18.2033 14.0723 17.4167 13.8692"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                            <path
+                                d="M14.6667 2.86917C15.4554 3.07111 16.1544 3.52981 16.6537 4.17296C17.1529 4.8161 17.4239 5.6071 17.4239 6.42125C17.4239 7.23541 17.1529 8.02641 16.6537 8.66955C16.1544 9.3127 15.4554 9.7714 14.6667 9.97334"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                        </svg>
+                        <p>Użytkownik</p>
+                    ) : null}
+
+                </div>
+                <div class="no-code-block">
+                    {iconSet === 1 ? (
+                        <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M16.6667 10.8333C16.6667 15 13.75 17.0833 10.2834 18.2916C10.1018 18.3531 9.90466 18.3502 9.72504 18.2833C6.25004 17.0833 3.33337 15 3.33337 10.8333V4.99997C3.33337 4.77895 3.42117 4.56699 3.57745 4.41071C3.73373 4.25443 3.94569 4.16663 4.16671 4.16663C5.83337 4.16663 7.91671 3.16663 9.36671 1.89997C9.54325 1.74913 9.76784 1.66626 10 1.66626C10.2322 1.66626 10.4568 1.74913 10.6334 1.89997C12.0917 3.17497 14.1667 4.16663 15.8334 4.16663C16.0544 4.16663 16.2663 4.25443 16.4226 4.41071C16.5789 4.56699 16.6667 4.77895 16.6667 4.99997V10.8333Z"
+                                stroke-width="1.41667"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                            <path
+                                d="M7.5 9.99992L9.16667 11.6666L12.5 8.33325"
+                                stroke-width="1.41667"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                        </svg>
+                    <p>Traefik / TLS</p>
+
+                    ) : iconSet === 2 ? (
+                        <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M1.31633 14.9437C0.972492 15.2875 0.77927 15.7537 0.779166 16.2399V18.2309C0.779166 18.474 0.875743 18.7072 1.04765 18.8791C1.21956 19.051 1.45272 19.1476 1.69583 19.1476H4.44583C4.68895 19.1476 4.92211 19.051 5.09401 18.8791C5.26592 18.7072 5.3625 18.474 5.3625 18.2309V17.3142C5.3625 17.0711 5.45908 16.838 5.63099 16.6661C5.80289 16.4941 6.03605 16.3976 6.27917 16.3976H7.19583C7.43895 16.3976 7.67211 16.301 7.84401 16.1291C8.01592 15.9572 8.1125 15.724 8.1125 15.4809V14.5642C8.1125 14.3211 8.20908 14.088 8.38099 13.9161C8.55289 13.7441 8.78605 13.6476 9.02917 13.6476H9.18683C9.67302 13.6475 10.1393 13.4542 10.483 13.1104L11.2292 12.3642C12.5032 12.808 13.8901 12.8063 15.163 12.3594C16.436 11.9125 17.5195 11.0468 18.2365 9.90402C18.9535 8.7612 19.2614 7.40889 19.1099 6.06833C18.9583 4.72776 18.3564 3.4783 17.4024 2.52434C16.4484 1.57038 15.199 0.968402 13.8584 0.816882C12.5178 0.665362 11.1655 0.973271 10.0227 1.69024C8.8799 2.4072 8.01423 3.49078 7.56731 4.76371C7.1204 6.03664 7.1187 7.42355 7.5625 8.69757L1.31633 14.9437Z"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                        </svg>
+                                            <p>Authentik</p>
+
+                    ) : null}
+
+                </div>
+                <div class="no-code-block">
+                    {iconSet === 1 ? (
+                        <svg
+                            width="22"
+                            height="22"
+                            viewBox="0 0 22 22"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M20.1667 7.05833C20.1667 6.50833 19.8 5.95833 19.4333 5.68333L13.6583 2.10833C13.4208 1.97332 13.1524 1.90234 12.8792 1.90234C12.606 1.90234 12.3375 1.97332 12.1 2.10833L2.65834 7.60833C2.2 7.79166 1.83334 8.34166 1.83334 8.89166V14.9417C1.83334 15.4 2.2 16.0417 2.56667 16.3167L8.34167 19.8917C8.57916 20.0267 8.84765 20.0976 9.12084 20.0976C9.39402 20.0976 9.66251 20.0267 9.9 19.8917L19.3417 14.3917C19.8 14.1167 20.1667 13.475 20.1667 13.0167V7.05833Z"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                            <path
+                                d="M9.16667 20.075V12.8333L1.925 8.34167"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                            <path
+                                d="M9.16666 12.8334L20.075 6.50836"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                            <path
+                                d="M12.8333 18.15V10.725"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                            <path
+                                d="M16.5 16.0416V8.61664"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                        </svg>
+                                            <p>Docker</p>
+
+                    ) : iconSet === 2 ? (
+                        <svg
+                            width="22"
+                            height="22"
+                            viewBox="0 0 22 22"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M20.1667 11H17.8933C17.4927 10.9992 17.1029 11.1295 16.7834 11.3712C16.4639 11.6129 16.2323 11.9526 16.1242 12.3383L13.97 20.0017C13.9561 20.0493 13.9272 20.0911 13.8875 20.1208C13.8478 20.1506 13.7996 20.1667 13.75 20.1667C13.7004 20.1667 13.6522 20.1506 13.6125 20.1208C13.5728 20.0911 13.5439 20.0493 13.53 20.0017L8.47 1.99834C8.45612 1.95074 8.42717 1.90893 8.3875 1.87918C8.34783 1.84943 8.29959 1.83334 8.25 1.83334C8.20042 1.83334 8.15217 1.84943 8.1125 1.87918C8.07283 1.90893 8.04389 1.95074 8.03 1.99834L5.87584 9.66168C5.7681 10.0459 5.53794 10.3845 5.22029 10.626C4.90265 10.8676 4.51488 10.9989 4.11584 11H1.83334"
+                                stroke-width="1.55833"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#7CC6FE"
+                            />
+                        </svg>
+                        <p>Monitoring</p>
+                    ) : null}
+
+                </div>
+            </div>
+        ) : (
+            <ul>
+                <li>
+                    <>
+                        <span>01&ensp;</span>
+                        <span>#!/usr/bin/env&ensp;bash</span>
+                    </>
+                </li>
+                <li>
+                    <>
+                        <span>02&ensp;</span>
+                        <span>set&ensp;</span>
+                        <span>-euo&ensp;pipefail</span>
+                    </>
+                </li>
+                <li>
+                    <>
+                        <span>03&ensp;</span>
+                        <span>function</span>
+                        <span>&ensp;backup_infrastructure()&ensp;&#123;</span>
+                    </>
+                </li>
+                <li>
+                    <>
+                        <span>04&ensp;</span>
+                        <span>&ensp;&ensp;encrypt_backup</span>
+                        <span>&quot;$DATABASE&quot;</span>
+                    </>
+                </li>
+                <li>
+                    <>
+                        <span>05&ensp;</span>
+                        <span>rclone sync</span>
+                        <span>&quot;$BACKUP&quot;</span>
+                        <span>remote:r2</span>
+                    </>
+                </li>
+                <li>
+                    <>
+                        <span>06&ensp;</span>
+                        <span>&#125;</span>
+                    </>
+                </li>
+            </ul>
+        )
+    }
+</header>
+
+<style>
+    header {
+        height: 15rem;
+        padding: 1rem;
+        width: 100%;
+        border-radius: 10px 10px 0px 0px;
+        background-color: #0b1422;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2rem;
+    }
+    .proof-status-wrapper {
+        height: 3rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .proof-status-wrapper > p {
+        color: #536880;
+        font-size: 12px;
+    }
+
+    .proof-status {
+        background-color: #11271f;
+        border-radius: 10px;
+        border: 2px solid #234337;
+        padding: 0.75rem 0.5rem;
+        font-size: 12px;
+        width: auto;
+        color: #6c9a86;
+    }
+    .proof-circle {
+        display: inline-block;
+        border-radius: 50%;
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: #42d6a0;
+        margin-right: 0.5rem;
+    }
+
+    .no-code-block-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .no-code-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 0.25rem;
+
+        padding: 0.5rem;
+        border-radius: 10px;
+        border: 2px solid #34526a;
+        background-color: #122236;
+
+        width: 5.5rem;
+        height: 6rem;
+        flex-grow: 0;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+
+    .no-code-block:nth-child(2) {
+        background-color: #16304a;
+        border: 2px solid #5b9bcc;
+    }
+
+    .no-code-block > p {
+        font-size: 12px;
+        color: #7cc6fe;
+        text-align: center;
+    }
+    .no-code-block > svg {
+        width: auto;
+        height: 2.5rem;
+        flex-shrink: 0;
+    }
+</style>

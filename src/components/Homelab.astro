@@ -1,0 +1,84 @@
+---
+import Proof from "./homelab_components/Proof.astro";
+---
+
+<section>
+    <p class="chapter">02&ensp;/&ensp;PROOF&ensp;OF&ensp;WORK</p>
+    <h2>Mniej deklaracji. Więcej wdrożeń.</h2>
+    <p>Mój homelab to miejsce, w którym teoria spotyka rzeczywiste problemy.</p>
+    <div class="list-of-proofs">
+        <Proof
+            headerTags={["LINUX", "DEVOPS", "SECURITY"]}
+            title="Bezpieczny serwer Linux"
+            newLineTitle="& własna platforma PaaS"
+            challenge="publiczny VPS i wiele usług."
+            solution="hardening Ubuntu, izolacja kontenerów, reverse proxy z automatycznym TLS i procedura odtwarzania po awarii"
+            tags={["Ubuntu", "Docker", "Traefik", "UFW"]}
+            headerType="no-code"
+            statusTag="INFRASTRUCTURE"
+            lab="LAB_01"
+            iconSet={1}
+        />
+        <Proof
+            headerTags={["SSO", "MONITORING", "ZERO TRUST"]}
+            title="Jedno logowanie."
+            newLineTitle="Pełna widoczność infrastruktury."
+            challenge="rozproszone konta i brak alertów."
+            solution="centralne SSO, agregacja logów i monitoring usług z powiadomieniami push oraz webhookami w czasie rzeczywistym."
+            tags={["Authentik", "Uptime Kuma", "ntfy", "Dozzle"]}
+            headerType="no-code"
+            statusTag="IDENTITY & OBSERVABILITY"
+            lab="LAB_02"
+            iconSet={2}
+        />
+        <Proof
+            headerTags={["SCRIPTING", "BACKUP", "OPERATIONS"]}
+            title="Powtarzalne zadania?"
+            newLineTitle="Od tego jest Bash."
+            challenge="ręczne, podatne na błędy operacje."
+            solution="skrypty tworzenia baz, zarządzania uprawnieniami, rotacji logów i szyfrowanych kopii zapasowych do chmury."
+            tags={["Bash", "Cron", "MariaDB", "S3 / R2"]}
+            headerType="code"
+            statusTag="AUTOMATION"
+            lab="LAB_03"
+            iconSet={null}
+        />
+    </div>
+</section>
+
+<style>
+    section {
+        width: 100%;
+        max-width: 84rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 1.25rem;
+        margin-inline: auto;
+        border-bottom: 2px solid #1a2638;
+    }
+
+    .chapter {
+        color: #7cc6fe;
+        font-size: 12px;
+    }
+    h2 {
+        color: #eaf0f8;
+        line-height: 23px;
+        letter-spacing: -1px;
+    }
+    p:last-of-type {
+        color: #7f8fa5;
+        line-height: 22px;
+    }
+
+    .list-of-proofs {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+</style>
