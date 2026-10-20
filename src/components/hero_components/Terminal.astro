@@ -75,14 +75,18 @@
             </p>
         </div>
     </div>
+    <p class="status-terminal">
+        <span class="status-terminal-circle"></span>All systems operational
+    </p>
 </div>
-<!-- <div class="status-terminal"></div> -->
 
 <style>
     .terminal {
+        position: relative;
         display: flex;
         flex-direction: column;
         width: 100%;
+        max-width: 35rem;
         height: auto;
         border-radius: 10px;
         border: 2px solid #2a3c50;
@@ -196,6 +200,27 @@
         width: 0.625rem;
         height: 0.625rem;
         background-color: #6edab0;
+        margin-right: 0.5rem;
+    }
+
+    .status-terminal {
+        position: absolute;
+        bottom: -2rem;
+        right: -0.5rem;
+        width: fit-content;
+        padding: 1rem;
+        background-color: #10251f;
+        border-radius: 10px;
+        border: 2px solid #294334;
+        color: #87d3b2;
+        font-size: 12px;
+    }
+    .status-terminal-circle {
+        display: inline-block;
+        border-radius: 50%;
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: #42d6a0;
         margin-right: 0.5rem;
     }
 </style>

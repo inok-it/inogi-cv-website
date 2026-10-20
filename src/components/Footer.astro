@@ -1,0 +1,134 @@
+<footer>
+    <div>
+        <p>© 2026 INOGI. Built with purpose. Secured by default.</p>
+        <p><span class="footer-circle"></span>Gotowy na kolejne wyzwanie</p>
+        <a href=""
+            >Powrót na górę<svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M2.5 6L6 2.5L9.5 6"
+                    stroke-width="0.85"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="#61748E"></path>
+                <path
+                    d="M6 9.5V2.5"
+                    stroke-width="0.85"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="#61748E"></path>
+            </svg>
+        </a>
+    </div>
+</footer>
+
+<style>
+    footer {
+        width: 100%;
+        background-color:;
+        border-top: 2px solid #213047;
+        background-color: #091020;
+    }
+
+    div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    div > p:first-of-type {
+        justify-self: start;
+    }
+    div > p:last-of-type {
+        justify-self: center;
+    }
+    div > a {
+        justify-self: end;
+    }
+
+    p,
+    a {
+        font-size: 12px;
+        margin: 0;
+    }
+
+    p:first-of-type {
+        color: #61748e;
+    }
+
+    p:last-of-type {
+        color: #87d3b2;
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #61748e;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    svg {
+        display: inline-block;
+        width: 0.875rem;
+        height: 0.875rem;
+        margin-left: 0.5rem;
+    }
+
+    .footer-circle {
+        display: inline-block;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: #42d6a0;
+        margin-right: 0.5rem;
+    }
+
+    @media (max-width: 850px) {
+        div {
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem 1rem;
+        }
+
+        div > a {
+            order: 2;
+        }
+
+        div > p:last-of-type {
+            order: 3;
+            grid-column: 1 / -1;
+            justify-self: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        div {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        div > p:first-of-type,
+        div > p:last-of-type,
+        div > a {
+            justify-self: center;
+        }
+
+        div > p:last-of-type {
+            order: 2;
+            grid-column: auto;
+        }
+        div > a {
+            order: 3;
+        }
+    }
+</style>
