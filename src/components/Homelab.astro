@@ -2,62 +2,90 @@
 import Proof from "./homelab_components/Proof.astro";
 ---
 
-<section>
-    <p class="chapter">02&ensp;/&ensp;PROOF&ensp;OF&ensp;WORK</p>
-    <h2>Mniej deklaracji. Więcej wdrożeń.</h2>
-    <p>Mój homelab to miejsce, w którym teoria spotyka rzeczywiste problemy.</p>
-    <div class="list-of-proofs">
-        <Proof
-            headerTags={["LINUX", "DEVOPS", "SECURITY"]}
-            title="Bezpieczny serwer Linux"
-            newLineTitle="& własna platforma PaaS"
-            challenge="publiczny VPS i wiele usług."
-            solution="hardening Ubuntu, izolacja kontenerów, reverse proxy z automatycznym TLS i procedura odtwarzania po awarii"
-            tags={["Ubuntu", "Docker", "Traefik", "UFW"]}
-            headerType="no-code"
-            statusTag="INFRASTRUCTURE"
-            lab="LAB_01"
-            iconSet={1}
-        />
-        <Proof
-            headerTags={["SSO", "MONITORING", "ZERO TRUST"]}
-            title="Jedno logowanie."
-            newLineTitle="Pełna widoczność infrastruktury."
-            challenge="rozproszone konta i brak alertów."
-            solution="centralne SSO, agregacja logów i monitoring usług z powiadomieniami push oraz webhookami w czasie rzeczywistym."
-            tags={["Authentik", "Uptime Kuma", "ntfy", "Dozzle"]}
-            headerType="no-code"
-            statusTag="IDENTITY & OBSERVABILITY"
-            lab="LAB_02"
-            iconSet={2}
-        />
-        <Proof
-            headerTags={["SCRIPTING", "BACKUP", "OPERATIONS"]}
-            title="Powtarzalne zadania?"
-            newLineTitle="Od tego jest Bash."
-            challenge="ręczne, podatne na błędy operacje."
-            solution="skrypty tworzenia baz, zarządzania uprawnieniami, rotacji logów i szyfrowanych kopii zapasowych do chmury."
-            tags={["Bash", "Cron", "MariaDB", "S3 / R2"]}
-            headerType="code"
-            statusTag="AUTOMATION"
-            lab="LAB_03"
-            iconSet={null}
-        />
+<section id="homelab">
+    <div class="homelab-wrapper">
+        <div class="section-header">
+            <div class="header-titles">
+                <p class="chapter">02&ensp;/&ensp;PROOF&ensp;OF&ensp;WORK</p>
+                <h2>Mniej deklaracji. Więcej wdrożeń.</h2>
+                <p class="subtitle">
+                    Mój homelab to miejsce, w którym teoria spotyka rzeczywiste
+                    problemy.
+                </p>
+            </div>
+        </div>
+
+        <div class="list-of-proofs">
+            <Proof
+                headerTags={["LINUX", "DEVOPS", "SECURITY"]}
+                title="Bezpieczny serwer Linux"
+                newLineTitle="& własna platforma PaaS"
+                challenge="publiczny VPS i wiele usług."
+                solution="hardening Ubuntu, izolacja kontenerów, reverse proxy z automatycznym TLS i procedura odtwarzania po awarii"
+                tags={["Ubuntu", "Docker", "Traefik", "UFW"]}
+                headerType="no-code"
+                statusTag="INFRASTRUCTURE"
+                lab="LAB_01"
+                iconSet={1}
+            />
+            <Proof
+                headerTags={["SSO", "MONITORING", "ZERO TRUST"]}
+                title="Jedno logowanie."
+                newLineTitle="Pełna widoczność infrastruktury."
+                challenge="rozproszone konta i brak alertów."
+                solution="centralne SSO, agregacja logów i monitoring usług z powiadomieniami push oraz webhookami w czasie rzeczywistym."
+                tags={["Authentik", "Uptime Kuma", "ntfy", "Dozzle"]}
+                headerType="no-code"
+                statusTag="IDENTITY & OBSERVABILITY"
+                lab="LAB_02"
+                iconSet={2}
+            />
+            <Proof
+                headerTags={["SCRIPTING", "BACKUP", "OPERATIONS"]}
+                title="Powtarzalne zadania?"
+                newLineTitle="Od tego jest Bash."
+                challenge="ręczne, podatne na błędy operacje."
+                solution="skrypty tworzenia baz, zarządzania uprawnieniami, rotacji logów i szyfrowanych kopii zapasowych do chmury."
+                tags={["Bash", "Cron", "MariaDB", "S3 / R2"]}
+                headerType="code"
+                statusTag="AUTOMATION"
+                lab="LAB_03"
+                iconSet={null}
+            />
+        </div>
     </div>
 </section>
 
 <style>
     section {
+        /* Pełna szerokość (100%), aby dolne obramowanie (border-bottom) sięgało krawędzi ekranu powyżej 1330px */
         width: 100%;
-        max-width: 84rem;
+        min-width: 20rem; /* 320px */
+        border-bottom: 2px solid #1a2638;
+        padding-block: 3rem;
+    }
+
+    .homelab-wrapper {
+        /* Wewnętrzny kontener ograniczający treść do 1330px (83.125rem) i centrujący ją na większych monitorach */
+        width: 100%;
+        max-width: 83.125rem; /* 1330px */
+        margin-inline: auto;
+        padding-inline: 1rem;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 1.25rem;
-        margin-inline: auto;
-        border-bottom: 2px solid #1a2638;
+        gap: 2rem;
+    }
+    .section-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
+    .header-titles {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
     .chapter {
@@ -67,20 +95,46 @@ import Proof from "./homelab_components/Proof.astro";
         line-height: 1.4;
         letter-spacing: 0.02em;
     }
+
     h2 {
         color: #eaf0f8;
     }
-    p:last-of-type {
+
+    .subtitle {
         color: #7f8fa5;
         line-height: 1.6;
         font-size: var(--text-lead);
     }
 
     .list-of-proofs {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
+        /* Zamiast flexboxa używamy CSS Grid:
+           - Mobile (od 320px): 1 kolumna na 100% szerokości
+           - Tablet (od 768px): 2 kolumny
+           - PC (od 1024px): 3 równe kolumny o identycznej wysokości */
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        width: 100%;
+        align-items: stretch;
+    }
+
+    @media screen and (min-width: 768px) {
+        section {
+            padding-block: 4.5rem;
+        }
+        .homelab-wrapper {
+            padding-inline: 1.25rem;
+            gap: 2.5rem;
+        }
+        .list-of-proofs {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .list-of-proofs {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 </style>
