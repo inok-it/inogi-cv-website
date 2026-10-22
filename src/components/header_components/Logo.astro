@@ -16,10 +16,11 @@ import LogoImg from "../../assets/Inogi_logo_DARK_BG.svg";
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        flex-shrink: 0;
     }
     .logo-img {
         width: auto;
-        height: 4rem;
+        height: clamp(3rem, 2.5rem + 2.5vw, 3.5rem);
     }
     .logo-text {
         display: flex;
@@ -28,7 +29,7 @@ import LogoImg from "../../assets/Inogi_logo_DARK_BG.svg";
     }
     .logo-text span:first-of-type {
         font-size: var(--text-h3);
-        letter-spacing: 4px;
+        letter-spacing: clamp(2px, 0.5vw, 4px);
         font-weight: 700;
         color: #e8eef6;
         line-height: 1.1;
@@ -37,8 +38,9 @@ import LogoImg from "../../assets/Inogi_logo_DARK_BG.svg";
         font-family: var(--font-mono);
         font-size: var(--text-xs);
         font-weight: 400;
-        letter-spacing: 2px;
+        letter-spacing: clamp(0.5px, 0.25vw, 2px);
         color: #8e9bae;
         line-height: 1.2;
+        white-space: nowrap;
     }
 </style>

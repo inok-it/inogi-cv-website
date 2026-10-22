@@ -62,7 +62,6 @@
 </div>
 
 <menu class="menu-mobile">
-    <li><a href="#">O mnie</a></li>
     <li><a href="#">Kompetencje</a></li>
     <li><a href="#">Homelab & Projekty</a></li>
     <li><a href="#">Stack technologiczny</a></li>
@@ -104,7 +103,9 @@
 <style>
     .button-wrapper {
         display: flex;
-        gap: 1rem;
+        align-items: center;
+        flex-shrink: 0;
+        gap: 0.5rem;
     }
 
     .menu-btn {
@@ -126,7 +127,7 @@
         position: absolute;
         top: 100%;
         left: 0;
-        width: inherit;
+        width: 100%;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -177,6 +178,7 @@
     .download-btn svg {
         width: 1.5rem;
         height: 1.5rem;
+        flex-shrink: 0;
     }
 
     .download-btn:hover,
@@ -199,15 +201,40 @@
             margin-bottom: 0;
             margin-inline: 0;
         }
+
+        .menu-mobile > li:last-of-type {
+            display: none;
+        }
+
+        .menu-mobile > li:nth-last-of-type(2) {
+            border-bottom: none;
+        }
     }
     @media screen and (max-width: 500px) {
         .hide-download-btn-less-than-500px {
             display: none !important;
         }
     }
+
+    @media screen and (min-width: 768px) {
+        .button-wrapper {
+            gap: 1rem;
+        }
+        .menu-btn,
+        .download-btn {
+            height: 3rem;
+        }
+        .menu-btn {
+            width: 3rem;
+        }
+    }
+
     @media screen and (min-width: 1024px) {
         .menu-btn {
             display: none;
+        }
+        .menu-mobile {
+            display: none !important;
         }
     }
 

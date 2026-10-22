@@ -5,24 +5,39 @@ import MobileMenuAndButtons from "./header_components/MobileMenuAndButtons.astro
 ---
 
 <header>
-    <Logo />
-    <MenuPC />
-    <MobileMenuAndButtons />
+    <div class="header-container">
+        <Logo />
+        <MenuPC />
+        <MobileMenuAndButtons />
+    </div>
 </header>
 
 <style>
     header {
-        padding: 1.25rem;
         width: 100%;
+        min-width: 20rem;
         position: sticky;
-        display: flex;
-        gap: 1rem;
-        justify-content: space-between;
-        align-items: center;
-        padding-block: 1rem;
-        border-bottom: 2px solid #202c3e;
         top: 0;
+        border-bottom: 2px solid #202c3e;
         background-color: #091020;
         z-index: 50;
+    }
+
+    .header-container {
+        width: 100%;
+        max-width: 83.125rem; /* 1330px */
+        margin-inline: auto;
+        padding: 0.75rem 1rem;
+        display: flex;
+        gap: 0.75rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @media screen and (min-width: 768px) {
+        .header-container {
+            padding: 1rem 1.25rem;
+            gap: 1rem;
+        }
     }
 </style>

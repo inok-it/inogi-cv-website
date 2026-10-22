@@ -3,7 +3,6 @@
 ---
 
 <menu class="menu-pc">
-    <li><a href="#">O mnie</a></li>
     <li><a href="#">Kompetencje</a></li>
     <li><a href="#">Homelab & Projekty</a></li>
     <li><a href="#">Stack</a></li>
@@ -19,7 +18,7 @@
         margin: 0;
         padding: 0;
         font-size: var(--text-card);
-        gap: 1rem;
+        gap: clamp(1rem, 2vw, 2rem);
         height: 3rem;
     }
     .menu-pc li {
