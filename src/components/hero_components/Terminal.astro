@@ -82,6 +82,8 @@
 
 <style>
     .terminal {
+        font-family: var(--font-mono);
+        font-feature-settings: "liga" 0;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -103,7 +105,8 @@
         border-bottom: 2px solid #2a3c50;
     }
     p {
-        font-size: 14px;
+        font-size: var(--text-sm);
+        line-height: 1.6;
     }
     .terminal-nav > p {
         color: #75869b;
@@ -155,7 +158,7 @@
     }
     .first-command-result {
         color: #c9d5e5;
-        line-height: 25px;
+        line-height: 1.6;
 
         > span {
             color: #5d708b;
@@ -188,7 +191,7 @@
     }
     .fourth-command-result {
         color: #6edab0;
-        line-height: 18px;
+        line-height: 1.6;
         > span:last-of-type {
             color: #75869b;
         }
@@ -213,7 +216,8 @@
         border-radius: 10px;
         border: 2px solid #294334;
         color: #87d3b2;
-        font-size: 12px;
+        font-size: var(--text-xs);
+        line-height: 1.4;
     }
     .status-terminal-circle {
         display: inline-block;

@@ -1,28 +1,109 @@
 <style is:global is:inline>
     :root {
-        --color-primary: #091020;
-        --color-secondary: #0d1726;
-        --accent-color: #7cc6fe;
-        --accent-color-transparent: rgba(124, 198, 254, 0.1);
+        --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-        --border-color: #202c3e;
-        --text-color-primary: #e8eef6;
-        --text-color-secondary: #8e9bae;
-        --text-color-tertiary: #a7b3c5;
-        --text-color-four: #7e8ca1;
-        --global-padding-mobile: 1.25rem;
+        /* Skala płynnej typografii: 320px (20rem) -> 1024px (64rem) */
 
-        --gradient-secondary: linear-gradient(
-            130deg,
-            rgba(16, 28, 43, 0.85),
-            rgba(13, 23, 38, 0.85)
-        );
+        /* 12px -> 13px (Tagi, badge, mikro-etykiety nad sekcjami) */
+        --text-xs: clamp(0.75rem, 0.722rem + 0.142vw, 0.8125rem);
+
+        /* 13px -> 14px (Kod w oknie terminala, stopka, metadane) */
+        --text-sm: clamp(0.8125rem, 0.784rem + 0.142vw, 0.875rem);
+
+        /* 14px -> 15px (Opisy wewnątrz kart usług i wdrożeń) */
+        --text-card: clamp(0.875rem, 0.847rem + 0.142vw, 0.9375rem);
+
+        /* 15px -> 16px (Bazowy tekst, inputy formularza, przyciski) */
+        --text-base: clamp(0.9375rem, 0.909rem + 0.142vw, 1rem);
+
+        /* 16px -> 20px (Lead paragraf w Hero i podtytuły sekcji) */
+        --text-lead: clamp(1rem, 0.886rem + 0.568vw, 1.25rem);
+
+        /* 18px -> 22px (H3: Tytuły kart i punkty na osi czasu) */
+        --text-h3: clamp(1.125rem, 1.011rem + 0.568vw, 1.375rem);
+
+        /* 23px -> 32px (H2: Główne nagłówki sekcji) */
+        --text-h2: clamp(1.4375rem, 1.182rem + 1.278vw, 2rem);
+
+        /* 28px -> 48px (H1: Nagłówek w sekcji Hero) */
+        --text-h1: clamp(1.75rem, 1.182rem + 2.841vw, 3rem);
+    }
+
+    html {
+        font-family: var(--font-sans);
+        font-size: 16px;
+        /* Kluczowe na ciemnym tle: zapobiega "rozlewaniu się" białych liter */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
     }
 
     body {
-        background-color: var(--color-primary);
+        background-color: #091020;
         min-height: 100svh;
         width: 100vw;
+        font-size: var(--text-base);
+        line-height: 1.65;
+    }
+
+    h1,
+    .h1 {
+        font-size: var(--text-h1);
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        font-weight: 700;
+        text-wrap: balance;
+    }
+
+    h2,
+    .h2 {
+        font-size: var(--text-h2);
+        line-height: 1.2;
+        letter-spacing: -0.025em;
+        font-weight: 700;
+        text-wrap: balance;
+    }
+
+    h3,
+    .h3 {
+        font-size: var(--text-h3);
+        line-height: 1.3;
+        letter-spacing: -0.015em;
+        font-weight: 600;
+    }
+
+    p {
+        text-wrap-style: balance;
+    }
+
+    .lead {
+        font-size: var(--text-lead);
+        line-height: 1.6;
+    }
+
+    .card-text {
+        font-size: var(--text-card);
+        line-height: 1.6;
+    }
+
+    /* Klasy techniczne (JetBrains Mono) */
+    code,
+    pre,
+    .mono-terminal {
+        font-family: var(--font-mono);
+        font-size: var(--text-sm);
+        line-height: 1.6;
+        font-feature-settings: "liga" 0; /* Wyłącza ligatury w terminalu dla czytelności komend */
+    }
+
+    .tag,
+    .badge,
+    .eyebrow {
+        font-family: var(--font-mono);
+        font-size: var(--text-xs);
+        line-height: 1.4;
+        letter-spacing: 0.02em;
     }
 
     main,
