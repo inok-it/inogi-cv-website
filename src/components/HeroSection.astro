@@ -11,38 +11,54 @@ import FooterTags from "./hero_components/FooterTags.astro";
 ---
 
 <section>
-    <div class="hero-content-and-terminal">
-        <div class="hero-content">
-            <Status />
-            <Tags2 />
-            <Header />
-            <Paragraph />
-            <div class="hero-actions">
-                <CTA />
-                <Icons />
+    <div class="hero-container">
+        <div class="hero-content-and-terminal">
+            <div class="hero-content">
+                <Status />
+                <Tags2 />
+                <Header />
+                <Paragraph />
+                <div class="hero-actions">
+                    <CTA />
+                    <Icons />
+                </div>
+                <Tags />
             </div>
-            <Tags />
+            <div class="hero-terminal">
+                <Terminal />
+            </div>
         </div>
-        <div class="hero-terminal">
-            <Terminal />
-        </div>
+        <FooterTags />
     </div>
-    <FooterTags />
 </section>
 
 <style>
     section {
         width: 100%;
+        min-width: 20rem;
+        border-bottom: 2px solid #1a2638;
+    }
+    .hero-container {
+        width: 100%;
+        max-width: 83.125rem; /* 1330px */
+        margin-inline: auto;
+        padding: 1.5rem 1rem 0 1rem;
         display: flex;
         flex-direction: column;
-        gap: 4rem;
-        border-bottom: 2px solid #1a2638;
-        padding: 1.25rem;
+        gap: 3rem;
+    }
+
+    .hero-content-and-terminal {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        ustify-content: space-between;
+        align-items: flex-start;
+        gap: 2.5rem;
     }
 
     .hero-content {
-        width: auto;
-        height: auto;
+        width: 100%;
         max-width: 40rem;
     }
 
@@ -52,22 +68,46 @@ import FooterTags from "./hero_components/FooterTags.astro";
         flex-wrap: wrap;
         align-items: center;
         justify-content: flex-start;
-        gap: 1rem;
+        gap: 0.75rem;
         margin-bottom: 1.5rem;
     }
 
     .hero-terminal {
         width: 100%;
-        max-width: 40rem;
+        max-width: 36rem;
+        margin-bottom: 1.5rem;
     }
-    .hero-content-and-terminal {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 2rem;
-        height: auto;
+
+    @media screen and (min-width: 768px) {
+        .hero-container {
+            padding: 1.5rem 1.25rem 0 1.25rem;
+            gap: 4rem;
+        }
+        .hero-actions {
+            gap: 1rem;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .hero-content-and-terminal {
+            flex-direction: row;
+            align-items: center;
+            gap: 2.5rem;
+        }
+        .hero-content {
+            flex: 1 1 50%;
+        }
+        .hero-terminal {
+            flex: 1 1 45%;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 0;
+        }
+    }
+
+    @media screen and (min-width: 1330px) {
+        .hero-container {
+            padding-top: clamp(2rem, -3.636rem + 6.78vi, 4.5rem);
+        }
     }
 </style>

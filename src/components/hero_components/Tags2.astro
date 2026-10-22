@@ -3,11 +3,17 @@
 <style>
     p {
         color: #8d9eb5;
-        letter-spacing: 2px;
+        letter-spacing: clamp(1px, 0.3vw, 2px);
         font-size: var(--text-xs);
-        line-height: 13px;
-        margin-bottom: 1.5rem;
+        line-height: 1.4;
+        margin-bottom: 1rem;
         line-height: 1.4;
         font-family: var(--font-mono);
+    }
+
+    @media screen and (min-width: 768px) {
+        p {
+            margin-bottom: 1.25rem;
+        }
     }
 </style>
