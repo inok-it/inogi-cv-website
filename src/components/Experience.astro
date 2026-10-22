@@ -2,50 +2,65 @@
 import Exp from "./experience_components/Exp.astro";
 ---
 
-<section>
-    <div class="exp-header">
-        <p class="chapter">04&ensp;/&ensp;DOŚWIADCZENIE</p>
-        <h2>Praktyka buduje pewność działania.</h2>
-        <p>
-            Rozwijam kompetencje tam, gdzie widać efekty: w działających
-            usługach, rozwiązanych zgłoszeniach i dobrze udokumentowanych
-            wdrożeniach.
-        </p>
-    </div>
-    <div class="exp-content">
-        <Exp
-            header="PRAKTYKA / HOMELAB"
-            title="Administracja własną infrastrukturą"
-            tags="Linux · Konteneryzacja · Bezpieczeństwo"
-            text="Utrzymanie serwerów VPS i aplikacji, konfiguracja sieci oraz usług. Automatyzacja wdrożeń, testy odtwarzania kopii zapasowych i dokumentowanie procedur operacyjnych."
-        />
-        <Exp
-            header="WSPARCIE TECHNICZNE"
-            title="Rozwiązywanie problemów. Wsparcie ludzi."
-            tags="IT Support · Diagnostyka · Komunikacja"
-            text="Diagnostyka problemów sprzętowych, systemowych i sieciowych. Konfiguracja stanowisk, pomoc użytkownikom i przekładanie technicznych zagadnień na konkretne instrukcje."
-        />
-        <Exp
-            header="WYKSZTAŁCENIE"
-            title="Informatyka — studia inżynierskie"
-            tags="Systemy sieciowe i cyberbezpieczeństwo"
-            text="Miejsce na uczelnię, daty i uzyskany tytuł. Szczegóły wykształcenia oraz doświadczenia należy zweryfikować i uzupełnić przed publikacją."
-        />
+<section id="experience">
+    <div class="exp-wrapper">
+        <div class="exp-header">
+            <p class="chapter">04&ensp;/&ensp;DOŚWIADCZENIE</p>
+            <h2>Praktyka buduje pewność działania.</h2>
+            <p class="subtitle">
+                Rozwijam kompetencje tam, gdzie widać efekty: w działających
+                usługach, rozwiązanych zgłoszeniach i dobrze udokumentowanych
+                wdrożeniach.
+            </p>
+        </div>
+        <div class="exp-content">
+            <Exp
+                header="PRAKTYKA / HOMELAB"
+                title="Administracja własną infrastrukturą"
+                tags="Linux · Konteneryzacja · Bezpieczeństwo"
+                text="Utrzymanie serwerów VPS i aplikacji, konfiguracja sieci oraz usług. Automatyzacja wdrożeń, testy odtwarzania kopii zapasowych i dokumentowanie procedur operacyjnych."
+            />
+            <Exp
+                header="WSPARCIE TECHNICZNE"
+                title="Rozwiązywanie problemów. Wsparcie ludzi."
+                tags="IT Support · Diagnostyka · Komunikacja"
+                text="Diagnostyka problemów sprzętowych, systemowych i sieciowych. Konfiguracja stanowisk, pomoc użytkownikom i przekładanie technicznych zagadnień na konkretne instrukcje."
+            />
+            <Exp
+                header="WYKSZTAŁCENIE"
+                title="Informatyka — studia inżynierskie"
+                tags="Systemy sieciowe i cyberbezpieczeństwo"
+                text="Miejsce na uczelnię, daty i uzyskany tytuł. Szczegóły wykształcenia oraz doświadczenia należy zweryfikować i uzupełnić przed publikacją."
+            />
+        </div>
     </div>
 </section>
 
 <style>
     section {
         width: 100%;
-        max-width: 84rem;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 1rem;
-
-        padding: 1.25rem;
-        margin-inline: auto;
+        min-width: 20rem; /* 320px */
         border-bottom: 2px solid #1a2638;
+        padding-block: 3rem;
+    }
+
+    .exp-wrapper {
+        width: 100%;
+        max-width: 83.125rem; /* 1330px */
+        margin-inline: auto;
+        padding-inline: 1rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        align-items: start;
+    }
+
+    .exp-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+        max-width: 36rem;
     }
 
     .chapter {
@@ -58,23 +73,47 @@ import Exp from "./experience_components/Exp.astro";
     h2 {
         color: #eaf0f8;
     }
-    section > div > p:last-of-type {
+    .subtitle {
         color: #7f8fa5;
         line-height: 1.6;
         font-size: var(--text-card);
     }
-    .exp-header {
-        max-width: 20rem;
-    }
+
     .exp-content {
+        width: 100%;
         border-left: 2px solid #293b51;
-        padding: 0 1.5rem 1.5rem 1.5rem;
+        margin-left: 0.375rem;
+        padding: 0 0 0.5rem 1.25rem;
         display: flex;
         flex-direction: column;
-        gap: 2rem;
-        flex-wrap: nowrap;
+        gap: 2.25rem;
         align-items: flex-start;
         justify-content: flex-start;
-        max-width: 30rem;
+    }
+
+    @media screen and (min-width: 768px) {
+        section {
+            padding-block: 4.5rem;
+        }
+        .exp-wrapper {
+            padding-inline: 1.25rem;
+        }
+        .exp-content {
+            padding-left: 1.75rem;
+            gap: 2.5rem;
+        }
+    }
+    @media screen and (min-width: 1024px) {
+        .exp-wrapper {
+            grid-template-columns: minmax(18rem, 22rem) 1fr;
+            gap: 4rem;
+        }
+        .exp-header {
+            max-width: 22rem;
+        }
+        .exp-content {
+            max-width: 48rem;
+            padding-left: 2rem;
+        }
     }
 </style>
