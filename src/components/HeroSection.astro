@@ -110,4 +110,17 @@ import FooterTags from "./hero_components/FooterTags.astro";
             padding-top: clamp(2rem, -3.636rem + 6.78vi, 4.5rem);
         }
     }
+
+    @media screen and (min-width: 1440px) {
+        section {
+            height: calc(100dvh - 5.625rem);
+        }
+
+        .hero-container {
+            padding-top: clamp(6rem, calc(1.5rem + 5vw), 7.5rem);
+            height: 100%;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
 </style>
