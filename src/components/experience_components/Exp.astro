@@ -38,19 +38,23 @@ const { header, title, text, tags } = Astro.props;
         padding: 0.25rem;
     }
     .exp-header {
-        font-size: 12px;
+        font-size: var(--text-xs);
+        font-family: var(--font-mono);
+        letter-spacing: 0.05em;
+        line-height: 1.4;
         color: #7cc6fe;
     }
     h3 {
         color: #eaf0f8;
     }
     .exp-tags {
-        font-size: 10px;
-
+        font-size: var(--text-xs);
+        line-height: 1.4;
         color: #72849d;
     }
     .exp-text {
-        font-size: 14px;
+        font-size: var(--text-card);
+        line-height: 1.6;
         color: #92a0b4;
     }
 </style>

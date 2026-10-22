@@ -71,24 +71,27 @@ const { icon, title, skill_count, paragraph, tags, summary } = Astro.props;
             background-color: #142a3d;
             border-radius: 8px;
             border: 2px solid #29435a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .skill-count {
             color: #53677f;
-            font-size: 12px;
+            font-size: var(--text-xs);
+            font-family: var(--font-mono);
+            line-height: 1.4;
         }
     }
 
     h3 {
-        line-height: 22.5px;
-        letter-spacing: -0.5px;
         color: #eaf0f8;
         margin-bottom: -1rem;
     }
     .description {
         color: #8b9bb0;
-        line-height: 23px;
-        font-size: 14px;
+        line-height: 1.6;
+        font-size: var(--text-card);
     }
 
     .tags {
@@ -103,7 +106,6 @@ const { icon, title, skill_count, paragraph, tags, summary } = Astro.props;
     .tag {
         color: #99adc6;
         padding: 0.5rem;
-        font-size: 12px;
         background-color: #142033;
         border: 2px solid #28364a;
         border-radius: 5px;
@@ -111,10 +113,12 @@ const { icon, title, skill_count, paragraph, tags, summary } = Astro.props;
 
     footer {
         color: #6f91ab;
-        font-size: 12px;
+        font-size: var(--text-xs);
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        font-family: var(--font-mono);
+        line-height: 1.4;
     }
     footer > svg {
         margin-right: 0.5rem;

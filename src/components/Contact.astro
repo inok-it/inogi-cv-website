@@ -191,12 +191,12 @@ import Form from "./contact_components/Form.astro";
 
     .contact-subheader {
         color: #7cc6fe;
-        letter-spacing: 1px;
-        font-size: 12px;
+        letter-spacing: 0.02em;
+        font-family: var(--font-mono);
+        line-height: 1.4;
+        font-size: var(--text-xs);
     }
     h2 {
-        line-height: 23px;
-        letter-spacing: -1px;
         color: #eaf0f8;
         > span {
             color: #7cc6fe;
@@ -204,8 +204,8 @@ import Form from "./contact_components/Form.astro";
     }
     .paragraph-header {
         color: #8d9db2;
-        line-height: 23px;
-        font-size: 14px;
+        font-size: var(--text-card);
+        line-height: 1.6;
     }
 
     .copy-button-header {
@@ -230,10 +230,16 @@ import Form from "./contact_components/Form.astro";
         gap: 0.5rem;
         > span {
             color: #8093ac;
-            font-size: 12px;
+            font-size: var(--text-xs);
+            font-family: var(--font-mono);
+            line-height: 1.4;
+            letter-spacing: 0.05em;
         }
         > p {
-            line-height: 21px;
+            line-height: 1.4;
+            font-family: var(--font-mono);
+            font-size: var(--text-base);
+            font-weight: 600;
             color: #eaf0f8;
         }
     }
@@ -257,8 +263,11 @@ import Form from "./contact_components/Form.astro";
         background: none;
         border: none;
 
-        font-size: 12px;
+        font-size: var(--text-xs);
+        font-family: inherit;
         color: #9aacc2;
+        line-height: 1;
+        cursor: pointer;
         > svg {
             width: auto;
             height: 1.5rem;
@@ -271,8 +280,8 @@ import Form from "./contact_components/Form.astro";
         align-items: center;
         gap: 0.5rem;
         color: #98abc3;
-        font-size: 12px;
-        line-height: 16px;
+        font-size: var(--text-sm);
+        line-height: 1.4;
         cursor: pointer;
         > svg {
             height: 1.5rem;

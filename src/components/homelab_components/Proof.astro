@@ -78,21 +78,19 @@ const {
         background-color: #0b1422;
     }
     .header-tags-homelab {
-        font-size: 12px;
+        font-size: var(--text-xs);
+        font-family: var(--font-mono);
         color: #6e93b2;
         letter-spacing: 1px;
+        line-height: 1.4;
     }
     h3 {
-        line-height: 24px;
-        letter-spacing: -0.3px;
         color: #eaf0f8;
     }
-    .solution {
-        color: #8b9bb0;
-    }
+
     .bolder {
-        font-weight: bolder;
-        color: #8e9bae;
+        font-weight: 600;
+        color: #c9d5e5;
     }
 
     .tags-homelab {
@@ -107,7 +105,10 @@ const {
     .tag-homelab {
         color: #99adc6;
         padding: 0.5rem;
-        font-size: 12px;
+        font-size: var(--text-xs);
+        font-family: var(--font-mono);
+        line-height: 1.4;
+        letter-spacing: 0.02em;
         background-color: #142033;
         border: 2px solid #28364a;
         border-radius: 5px;
@@ -123,6 +124,8 @@ const {
     }
 
     .solution {
-        line-height: 23px;
+        line-height: 1.6;
+        color: #8b9bb0;
+        font-size: var(--text-card);
     }
 </style>

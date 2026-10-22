@@ -282,7 +282,9 @@ const { headerType, statusTag, lab, iconSet } = Astro.props;
 
     .proof-status-wrapper > p {
         color: #536880;
-        font-size: 12px;
+        font-size: var(--text-xs);
+        font-family: var(--font-mono); 
+        line-height: 1.4;
     }
 
     .proof-status {
@@ -290,7 +292,10 @@ const { headerType, statusTag, lab, iconSet } = Astro.props;
         border-radius: 10px;
         border: 2px solid #234337;
         padding: 0.75rem 0.5rem;
-        font-size: 12px;
+        font-size: var(--text-xs);
+        font-family: var(--font-mono);
+        line-height: 1.4;
+        letter-spacing: 0.02em;
         width: auto;
         color: #6c9a86;
     }
@@ -334,7 +339,9 @@ const { headerType, statusTag, lab, iconSet } = Astro.props;
     }
 
     .no-code-block > p {
-        font-size: 12px;
+        font-size: var(--text-xs);
+        font-family: var(--font-mono);
+        line-height: 1.2;
         color: #7cc6fe;
         text-align: center;
     }
@@ -342,5 +349,14 @@ const { headerType, statusTag, lab, iconSet } = Astro.props;
         width: auto;
         height: 2.5rem;
         flex-shrink: 0;
+    }
+
+    ul{
+        list-style: none; 
+        width: 100%; 
+        font-family: var(--font-mono); 
+        font-size: var(--text-xs); 
+        line-height: 1.6; 
+        font-feature-settings: "liga" 0;
     }
 </style>

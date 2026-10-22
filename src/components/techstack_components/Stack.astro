@@ -23,6 +23,7 @@ const { icon, title, tags } = Astro.props;
         width: 100%;
         height: auto;
         max-width: 18rem;
+        width: 100%;
         border-radius: 10px;
         border: 2px solid #233044;
         background-color: #101c2b;
@@ -42,9 +43,9 @@ const { icon, title, tags } = Astro.props;
         gap: 0.5rem;
     }
     h3 {
-        line-height: 18px;
+        line-height: 1.3;
         color: #d4deeb;
-        letter-spacing: -0.5px;
+        font-size: var(--text-base);
     }
     /* .icon-wrapper {
         padding: 0.5rem;
@@ -62,9 +63,14 @@ const { icon, title, tags } = Astro.props;
     .tag {
         color: #99adc6;
         padding: 0.5rem;
-        font-size: 12px;
         background-color: #142033;
         border: 2px solid #28364a;
         border-radius: 5px;
+    }
+
+    .icon-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>

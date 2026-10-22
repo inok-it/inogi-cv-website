@@ -14,7 +14,12 @@
             placeholder="Jan / Twoja firma"
         />
         <label for="email">Adres e-mail</label>
-        <input type="email" id="name" name="email" placeholder="jan@firma.pl" />
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="jan@firma.pl"
+        />
     </div>
     <label for="text">Wiadomość / Link do oferty</label>
     <textarea name="text" id="text" placeholder="Cześć! Szukamy osoby, która..."
@@ -73,9 +78,10 @@
         gap: 1rem;
     }
     label {
-        font-size: 12px;
+        font-size: var(--text-xs);
         color: #a0afc3;
-        line-height: 15px;
+        line-height: 1.4;
+        font-weight: 500;
     }
     input {
         border-radius: 10px;
@@ -83,11 +89,15 @@
         background-color: #0a1423;
         padding: 1rem;
         width: 100%;
+        font-family: inherit;
+        font-size: var(--text-base);
+        line-height: 1.5;
+        color: #eaf0f8;
     }
     ::placeholder {
         color: #556a84;
-        font-size: 12px;
-        line-height: 16px;
+        font-size: var(--text-sm);
+        line-height: 1.5;
     }
     textarea {
         resize: none;
@@ -108,7 +118,11 @@
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
-        font-weight: bold;
+        font-weight: 600;
+        font-family: inherit;
+        font-size: var(--text-base);
+        line-height: 1;
+        cursor: pointer;
         border: none;
         > svg {
             width: 1.25rem;
@@ -119,7 +133,8 @@
         margin-inline: auto;
         width: fit-content;
         color: #60748f;
-        font-size: 12px;
+        font-size: var(--text-xs);
         text-align: center;
+        line-height: 1.4;
     }
 </style>

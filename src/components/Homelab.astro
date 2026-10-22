@@ -62,16 +62,18 @@ import Proof from "./homelab_components/Proof.astro";
 
     .chapter {
         color: #7cc6fe;
-        font-size: 12px;
+        font-size: var(--text-xs);
+        font-family: var(--font-mono);
+        line-height: 1.4;
+        letter-spacing: 0.02em;
     }
     h2 {
         color: #eaf0f8;
-        line-height: 23px;
-        letter-spacing: -1px;
     }
     p:last-of-type {
         color: #7f8fa5;
-        line-height: 22px;
+        line-height: 1.6;
+        font-size: var(--text-lead);
     }
 
     .list-of-proofs {
