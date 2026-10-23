@@ -40,27 +40,39 @@ const securityIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none
         <div class="skills-container">
             <Skill
                 icon={serverIcon}
-                skill_count="01 / STABILNOŚĆ"
-                title="Systemy i infrastruktura"
-                paragraph="Instalacja, konfiguracja i utrzymanie Linux oraz Windows. Serwery VPS, konteneryzacja i wirtualizacja — od pierwszego wdrożenia po codzienną administrację."
-                tags={["Linux", "Windows", "Docker", "VPS"]}
-                summary="Fundament, na którym można polegać"
+                skill_count="01 / INFRASTRUKTURA"
+                title="PaaS i konteneryzacja"
+                paragraph="Kompleksowe wdrażanie i utrzymanie serwerów VPS opartych na Ubuntu oraz platformie Coolify. Izolowane środowiska kontenerowe zarządzane przez Docker i Traefik reverse proxy."
+                tags={["Ubuntu", "Coolify", "Docker", "Traefik", "VPS"]}
+                summary="Nowoczesna, automatyzowana infrastruktura"
             />
             <Skill
                 icon={networkIcon}
-                skill_count="02 / ZWINNOŚĆ"
-                title="IT Support i sieci"
-                paragraph="Diagnostyka sprzętu i oprogramowania L1/L2/L3. TCP/IP, DNS, VPN i wsparcie użytkowników. Szukam przyczyny, nie tylko obejścia. Tłumaczę technologię prostym językiem."
-                tags={["Troubleshooting", "TCP/IP", "DNS", "VPN"]}
-                summary="Problem → diagnoza → rozwiązanie"
+                skill_count="02 / E-COMMERCE"
+                title="Wydajny WordPress i WooCommerce"
+                paragraph="Projektowanie i utrzymanie wysoce wydajnych, izolowanych sklepów internetowych. Wielopoziomowe buforowanie (Redis, WP Super Cache, OPCache) i optymalizacja bazy danych."
+                tags={[
+                    "WordPress",
+                    "WooCommerce",
+                    "Redis",
+                    "OPCache",
+                    "Wydajność",
+                ]}
+                summary="Sklepy zoptymalizowane pod obciążenie"
             />
             <Skill
                 icon={securityIcon}
-                skill_count="03 / CZUJNOŚĆ"
-                title="Bezpieczeństwo i monitoring"
-                paragraph="Hardening, Zero Trust, Firewall i WAF. Klucze FIDO2/SSH, automatyczne kopie S3/R2 oraz monitoring 24/7. Wykrywanie problemów, zanim zauważą je użytkownicy."
-                tags={["Hardening", "Zero Trust", "Backup", "24/7"]}
-                summary="Bezpieczeństwo to proces, nie checkbox"
+                skill_count="03 / BEZPIECZEŃSTWO"
+                title="Hardening i Zero Trust"
+                paragraph="Ochrona na poziomie sieci i aplikacji: Cloudflare WAF, uwierzytelnianie Authentik z kluczami YubiKey (FIDO2) oraz automatyczne kopie zapasowe szyfrowane w Cloudflare R2."
+                tags={[
+                    "Cloudflare WAF",
+                    "Zero Trust",
+                    "Authentik",
+                    "YubiKey",
+                    "Backup R2",
+                ]}
+                summary="Defense-in-depth i pełna kontrola dostępu"
             />
         </div>
     </div>
