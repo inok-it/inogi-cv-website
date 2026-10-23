@@ -1,6 +1,3 @@
-Poniżej znajduje się plik `README.md` przygotowany pod repozytorium Twojego interaktywnego CV i portfolio.
-
-```markdown
 # INOGI — Interaktywne CV & Portfolio (IT Support & Sysadmin)
 
 Statyczna strona typu One-Page pełniąca rolę interaktywnego CV oraz wizytówki technicznej (**IT Support Specialist & Linux Administrator**). Projekt prezentuje praktyczne podejście do administracji serwerami Linux, sieci, automatyzacji w Bashu oraz wdrożeń we własnym środowisku Homelab.
