@@ -2,11 +2,11 @@
 import Form from "./contact_components/Form.astro";
 ---
 
-<section id="kontakt">
+<section id="kontakt" aria-labelledby="heading-kontakt">
     <div class="contact-wrapper">
         <div class="contact-header">
             <p class="contact-subheader">05 / LET'S CONNECT</p>
-            <h2>
+            <h2 id="heading-kontakt">
                 Szukasz samodzielnego specjalisty IT?<br /><span
                     >Porozmawiajmy.</span
                 >
@@ -18,7 +18,7 @@ import Form from "./contact_components/Form.astro";
             </p>
             <div class="copy-button-header card-hover">
                 <div class="icon-and-contact-wrapper">
-                    <span class="icon-wrapper">
+                    <span class="icon-wrapper" aria-hidden="true">
                         <svg
                             width="18"
                             height="18"
@@ -46,7 +46,11 @@ import Form from "./contact_components/Form.astro";
                     </div>
                 </div>
 
-                <button class="copy-btn" type="button">
+                <button
+                    class="copy-btn"
+                    type="button"
+                    aria-label="Kopiuj adres e-mail do schowka"
+                >
                     <svg
                         width="18"
                         height="18"
@@ -71,7 +75,12 @@ import Form from "./contact_components/Form.astro";
                 </button>
             </div>
             <div class="header-icons-sm">
-                <a href="#" class="sm-icon">
+                <a
+                    href="https://www.linkedin.com/in/twoj-profil"
+                    class="sm-icon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     <svg
                         width="18"
                         height="18"
@@ -120,7 +129,12 @@ import Form from "./contact_components/Form.astro";
                             stroke="#98ABC3"></path>
                     </svg>
                 </a>
-                <a href="#" class="sm-icon">
+                <a
+                    href="https://github.com/twoj-profil"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="sm-icon"
+                >
                     <svg
                         width="18"
                         height="18"

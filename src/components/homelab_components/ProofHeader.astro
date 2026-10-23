@@ -215,34 +215,46 @@ const { headerType, statusTag, lab, iconSet } = Astro.props;
                 </div>
             </div>
         ) : (
-            <ul>
+            <ul aria-label="Fragment skryptu kopii zapasowej w Bash">
                 <li>
-                    <span class="line-num">01&ensp;</span>
+                    <span class="line-num" aria-hidden="true">
+                        01&ensp;
+                    </span>
                     <span class="code-comment">#!/usr/bin/env bash</span>
                 </li>
                 <li>
-                    <span class="line-num">02&ensp;</span>
+                    <span class="line-num" aria-hidden="true">
+                        02&ensp;
+                    </span>
                     <span class="code-kw">set </span>
                     <span class="code-text">-euo pipefail</span>
                 </li>
                 <li>
-                    <span class="line-num">03&ensp;</span>
+                    <span class="line-num" aria-hidden="true">
+                        03&ensp;
+                    </span>
                     <span class="code-kw">function </span>
                     <span class="code-fn">backup_infrastructure() &#123;</span>
                 </li>
                 <li>
-                    <span class="line-num">04&ensp;</span>
+                    <span class="line-num" aria-hidden="true">
+                        04&ensp;
+                    </span>
                     <span class="code-text">&ensp;&ensp;encrypt_backup </span>
                     <span class="code-str">&quot;$DATABASE&quot;</span>
                 </li>
                 <li>
-                    <span class="line-num">05&ensp;</span>
+                    <span class="line-num" aria-hidden="true">
+                        05&ensp;
+                    </span>
                     <span class="code-text">&ensp;&ensp;rclone sync </span>
                     <span class="code-str">&quot;$BACKUP&quot; </span>
                     <span class="code-fn">remote:r2</span>
                 </li>
                 <li>
-                    <span class="line-num">06&ensp;</span>
+                    <span class="line-num" aria-hidden="true">
+                        06&ensp;
+                    </span>
                     <span class="code-fn">&#125;</span>
                 </li>
             </ul>

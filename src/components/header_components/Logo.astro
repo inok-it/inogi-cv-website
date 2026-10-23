@@ -3,15 +3,20 @@ import Image from "astro/components/Image.astro";
 import LogoImg from "../../assets/Inogi_logo_DARK_BG.svg";
 ---
 
-<div class="logo">
-    <Image src={LogoImg} alt="Logo" class="logo-img" />
-    <div class="logo-text">
-        <span>INOGI</span>
-        <span>IT SUPPORT & SYSADMIN</span>
+<a href="#o-mnie" class="logo" aria-label="INOGI — Strona główna">
+    <div class="logo">
+        <Image src={LogoImg} alt="" class="logo-img" loading={"eager"} />
+        <div class="logo-text">
+            <span>INOGI</span>
+            <span>IT SUPPORT & SYSADMIN</span>
+        </div>
     </div>
-</div>
+</a>
 
 <style>
+    a {
+        text-decoration: none;
+    }
     .logo {
         display: flex;
         align-items: center;

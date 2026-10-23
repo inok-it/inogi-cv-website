@@ -9,13 +9,13 @@ interface Props {
 const { header, title, text, tags } = Astro.props;
 ---
 
-<div class="exp-item">
+<li class="exp-item">
     <p class="exp-header">{header}</p>
     <h3>{title}</h3>
     <p class="exp-tags">{tags}</p>
     <p class="exp-text">{text}</p>
-    <span class="exp-circle"></span>
-</div>
+    <span class="exp-circle" aria-hidden="true"></span>
+</li>
 
 <style>
     .exp-item {

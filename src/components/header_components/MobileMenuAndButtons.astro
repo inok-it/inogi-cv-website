@@ -61,16 +61,22 @@
     </button>
 </div>
 
-<menu class="menu-mobile">
-    <li><a href="#kompetencje">Kompetencje</a></li>
-    <li>
-        <a href="#homelab">Homelab & Projekty</a>
+<nav aria-label="Główna nawigacja" class="mobile-nav-wrapper">
+    <ul id="mobile-nav-list" class="menu-mobile">
+        <li><a href="#kompetencje">Kompetencje</a></li>
+        <li>
+            <a href="#homelab">Homelab & Projekty</a>
+        </li>
         <li><a href="#stack">Stack technologiczny</a></li>
         <li><a href="#doswiadczenie">Doświadczenie</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
         <li>
-            <button class="download-btn hide-download-btn-more-than-500px">
+            <button
+                type="button"
+                class="download-btn hide-download-btn-more-than-500px"
+            >
                 <svg
+                    aria-hidden="true"
                     width="13"
                     height="18"
                     viewBox="0 0 13 18"
@@ -99,9 +105,14 @@
                 Pobierz CV
             </button>
         </li>
-    </li>
-</menu>
+    </ul>
+</nav>
+
 <style>
+    .mobile-nav-wrapper {
+        display: contents;
+    }
+
     .button-wrapper {
         display: flex;
         align-items: center;
@@ -251,14 +262,17 @@
 <script>
     const menuBtn = document.querySelector(".menu-btn");
     const menu = document.querySelector(".menu-mobile");
+
     if (menuBtn && menu) {
         menuBtn.addEventListener("click", () => {
-            menu.classList.toggle("show-menu");
+            const isOpen = menu.classList.toggle("show-menu");
+            menuBtn.setAttribute("aria-expanded", String(isOpen));
         });
 
         menu.querySelectorAll("a").forEach((link) => {
             link.addEventListener("click", () => {
                 menu.classList.remove("show-menu");
+                menuBtn.setAttribute("aria-expanded", "false");
             });
         });
     }

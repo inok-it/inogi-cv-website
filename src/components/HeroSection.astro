@@ -10,7 +10,7 @@ import Terminal from "./hero_components/Terminal.astro";
 import FooterTags from "./hero_components/FooterTags.astro";
 ---
 
-<section id="o-mnie">
+<section id="o-mnie" aria-labelledby="heading-hero">
     <div class="hero-container">
         <div class="hero-content-and-terminal">
             <div class="hero-content">
@@ -30,97 +30,97 @@ import FooterTags from "./hero_components/FooterTags.astro";
         </div>
         <FooterTags />
     </div>
-</section>
 
-<style>
-    section {
-        width: 100%;
-        min-width: 20rem;
-        border-bottom: 2px solid #1a2638;
-    }
-    .hero-container {
-        width: 100%;
-        max-width: 83.125rem; /* 1330px */
-        margin-inline: auto;
-        padding: 1.5rem 1rem 0 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
-    }
-
-    .hero-content-and-terminal {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        ustify-content: space-between;
-        align-items: flex-start;
-        gap: 2.5rem;
-    }
-
-    .hero-content {
-        width: 100%;
-        max-width: 40rem;
-    }
-
-    .hero-actions {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 0.75rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .hero-terminal {
-        width: 100%;
-        max-width: 36rem;
-        margin-bottom: 1.5rem;
-    }
-
-    @media screen and (min-width: 768px) {
+    <style>
+        section {
+            width: 100%;
+            min-width: 20rem;
+            border-bottom: 2px solid #1a2638;
+        }
         .hero-container {
-            padding: 1.5rem 1.25rem 0 1.25rem;
-            gap: 4rem;
+            width: 100%;
+            max-width: 83.125rem; /* 1330px */
+            margin-inline: auto;
+            padding: 1.5rem 1rem 0 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
         }
-        .hero-actions {
-            gap: 1rem;
-        }
-    }
 
-    @media screen and (min-width: 1024px) {
         .hero-content-and-terminal {
-            flex-direction: row;
-            align-items: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            ustify-content: space-between;
+            align-items: flex-start;
             gap: 2.5rem;
         }
+
         .hero-content {
-            flex: 1 1 50%;
+            width: 100%;
+            max-width: 40rem;
         }
-        .hero-terminal {
-            flex: 1 1 45%;
+
+        .hero-actions {
             display: flex;
-            justify-content: flex-end;
-            margin-bottom: 0;
-        }
-    }
-
-    @media screen and (min-width: 1330px) {
-        .hero-container {
-            padding-top: clamp(2rem, -3.636rem + 6.78vi, 4.5rem);
-        }
-    }
-
-    @media screen and (min-width: 1440px) {
-        section {
-            height: calc(100dvh - 5.625rem);
-        }
-
-        .hero-container {
-            padding-top: clamp(6rem, calc(1.5rem + 5vw), 7.5rem);
-            height: 100%;
+            flex-direction: row;
+            flex-wrap: wrap;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
         }
-    }
-</style>
+
+        .hero-terminal {
+            width: 100%;
+            max-width: 36rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media screen and (min-width: 768px) {
+            .hero-container {
+                padding: 1.5rem 1.25rem 0 1.25rem;
+                gap: 4rem;
+            }
+            .hero-actions {
+                gap: 1rem;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .hero-content-and-terminal {
+                flex-direction: row;
+                align-items: center;
+                gap: 2.5rem;
+            }
+            .hero-content {
+                flex: 1 1 50%;
+            }
+            .hero-terminal {
+                flex: 1 1 45%;
+                display: flex;
+                justify-content: flex-end;
+                margin-bottom: 0;
+            }
+        }
+
+        @media screen and (min-width: 1330px) {
+            .hero-container {
+                padding-top: clamp(2rem, -3.636rem + 6.78vi, 4.5rem);
+            }
+        }
+
+        @media screen and (min-width: 1440px) {
+            section {
+                height: calc(100dvh - 5.625rem);
+            }
+
+            .hero-container {
+                padding-top: clamp(6rem, calc(1.5rem + 5vw), 7.5rem);
+                height: 100%;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</section>

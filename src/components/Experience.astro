@@ -2,7 +2,7 @@
 import Exp from "./experience_components/Exp.astro";
 ---
 
-<section id="doswiadczenie">
+<section id="doswiadczenie" aria-labelledby="heading-doswiadczenie">
     <div class="exp-wrapper">
         <div class="exp-header">
             <p class="chapter">04&ensp;/&ensp;DOŚWIADCZENIE</p>
@@ -13,7 +13,7 @@ import Exp from "./experience_components/Exp.astro";
                 wdrożeniach.
             </p>
         </div>
-        <div class="exp-content">
+        <ol class="exp-content">
             <Exp
                 header="PRAKTYKA / HOMELAB"
                 title="Administracja własną infrastrukturą"
@@ -32,88 +32,89 @@ import Exp from "./experience_components/Exp.astro";
                 tags="Systemy sieciowe i cyberbezpieczeństwo"
                 text="Miejsce na uczelnię, daty i uzyskany tytuł. Szczegóły wykształcenia oraz doświadczenia należy zweryfikować i uzupełnić przed publikacją."
             />
-        </div>
+        </ol>
     </div>
-</section>
 
-<style>
-    section {
-        width: 100%;
-        min-width: 20rem; /* 320px */
-        border-bottom: 2px solid #1a2638;
-        padding-block: 3rem;
-    }
-
-    .exp-wrapper {
-        width: 100%;
-        max-width: 83.125rem; /* 1330px */
-        margin-inline: auto;
-        padding-inline: 1rem;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-        align-items: start;
-    }
-
-    .exp-header {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        width: 100%;
-        max-width: 36rem;
-    }
-
-    .chapter {
-        color: #7cc6fe;
-        font-size: var(--text-xs);
-        font-family: var(--font-mono);
-        line-height: 1.4;
-        letter-spacing: 0.02em;
-    }
-    h2 {
-        color: #eaf0f8;
-    }
-    .subtitle {
-        color: #7f8fa5;
-        line-height: 1.6;
-        font-size: var(--text-card);
-    }
-
-    .exp-content {
-        width: 100%;
-        border-left: 2px solid #293b51;
-        margin-left: 0.375rem;
-        padding: 0 0 0.5rem 1.25rem;
-        display: flex;
-        flex-direction: column;
-        gap: 2.25rem;
-        align-items: flex-start;
-        justify-content: flex-start;
-    }
-
-    @media screen and (min-width: 768px) {
+    <style>
         section {
-            padding-block: 4.5rem;
+            width: 100%;
+            min-width: 20rem; /* 320px */
+            border-bottom: 2px solid #1a2638;
+            padding-block: 3rem;
         }
+
         .exp-wrapper {
-            padding-inline: 1.25rem;
-        }
-        .exp-content {
-            padding-left: 1.75rem;
+            width: 100%;
+            max-width: 83.125rem; /* 1330px */
+            margin-inline: auto;
+            padding-inline: 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 2.5rem;
+            align-items: start;
         }
-    }
-    @media screen and (min-width: 1024px) {
-        .exp-wrapper {
-            grid-template-columns: minmax(18rem, 22rem) 1fr;
-            gap: 4rem;
-        }
+
         .exp-header {
-            max-width: 22rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            width: 100%;
+            max-width: 36rem;
         }
+
+        .chapter {
+            color: #7cc6fe;
+            font-size: var(--text-xs);
+            font-family: var(--font-mono);
+            line-height: 1.4;
+            letter-spacing: 0.02em;
+        }
+        h2 {
+            color: #eaf0f8;
+        }
+        .subtitle {
+            color: #7f8fa5;
+            line-height: 1.6;
+            font-size: var(--text-card);
+        }
+
         .exp-content {
-            max-width: 48rem;
-            padding-left: 2rem;
+            width: 100%;
+            border-left: 2px solid #293b51;
+            list-style: none;
+            margin: 0 0 0 0.375rem;
+            padding: 0 0 0.5rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.25rem;
+            align-items: flex-start;
+            justify-content: flex-start;
         }
-    }
-</style>
+
+        @media screen and (min-width: 768px) {
+            section {
+                padding-block: 4.5rem;
+            }
+            .exp-wrapper {
+                padding-inline: 1.25rem;
+            }
+            .exp-content {
+                padding-left: 1.75rem;
+                gap: 2.5rem;
+            }
+        }
+        @media screen and (min-width: 1024px) {
+            .exp-wrapper {
+                grid-template-columns: minmax(18rem, 22rem) 1fr;
+                gap: 4rem;
+            }
+            .exp-header {
+                max-width: 22rem;
+            }
+            .exp-content {
+                max-width: 48rem;
+                padding-left: 2rem;
+            }
+        }
+    </style>
+</section>

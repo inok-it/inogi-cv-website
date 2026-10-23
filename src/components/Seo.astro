@@ -1,0 +1,103 @@
+---
+interface Props {
+    title?: string;
+    description?: string;
+    canonicalUrl?: string;
+    ogImage?: string;
+}
+
+const {
+    title = "INOGI — IT Support & Sysadmin | Niezawodna infrastruktura",
+    description = "Szybki troubleshooting. Bezpieczne systemy. Mniej przestojów. Łączę administrację serwerami Linux, automatyzację i wsparcie IT L1/L2/L3.",
+    ogImage = "/og-image.jpg",
+} = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.origin : Astro.url.origin;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const absoluteOgImage = new URL(ogImage, siteUrl).href;
+
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    dateModified: "2026-10-22",
+    mainEntity: {
+        "@type": "Person",
+        name: "INOGI",
+        alternateName: "INOGI IT Support & Sysadmin",
+        jobTitle: "IT Support Specialist & Linux Administrator",
+        description: description,
+        url: canonicalUrl,
+        image: absoluteOgImage,
+        email: "mailto:kontakt@inogi.pl",
+        address: {
+            "@type": "PostalAddress",
+            addressCountry: "PL",
+        },
+        knowsAbout: [
+            "Linux System Administration",
+            "Ubuntu Server",
+            "Debian",
+            "Fedora",
+            "Arch Linux",
+            "Windows Server",
+            "Docker",
+            "Traefik",
+            "Zero Trust Security",
+            "Cloudflare WAF",
+            "UFW / iptables",
+            "Fail2ban",
+            "Authentik SSO",
+            "Bash Scripting",
+            "MariaDB",
+            "Redis",
+            "IT Support L1/L2/L3",
+            "TCP/IP & DNS",
+        ],
+        sameAs: [
+            "https://github.com/twoj-profil",
+            "https://www.linkedin.com/in/twoj-profil",
+        ],
+    },
+};
+---
+
+<!-- Podstawowy Config -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Podstawowe Meta Tagi -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#091020" />
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="profile" />
+<meta property="og:locale" content="pl_PL" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:site_name" content="INOGI — IT Support & Sysadmin" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={absoluteOgImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta
+    property="og:image:alt"
+    content="INOGI — IT Support & Linux Administrator"
+/>
+<meta property="og:image:secure_url" content={absoluteOgImage} />
+<meta property="og:image:type" content="image/png" />
+
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteOgImage} />
+
+<!-- Dane strukturalne JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

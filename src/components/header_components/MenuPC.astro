@@ -2,17 +2,28 @@
 
 ---
 
-<menu class="menu-pc">
-    <li><a href="#kompetencje" data-section="kompetencje">Kompetencje</a></li>
-    <li><a href="#homelab" data-section="homelab">Homelab & Projekty</a></li>
-    <li><a href="#stack" data-section="stack">Stack</a></li>
-    <li>
-        <a href="#doswiadczenie" data-section="doswiadczenie">Doświadczenie</a>
-    </li>
-    <li><a href="#kontakt" data-section="kontakt">Kontakt</a></li>
-</menu>
+<nav aria-label="Główna nawigacja" class="nav-pc">
+    <ul class="menu-pc">
+        <li>
+            <a href="#kompetencje" data-section="kompetencje">Kompetencje</a>
+        </li>
+        <li>
+            <a href="#homelab" data-section="homelab">Homelab & Projekty</a>
+        </li>
+        <li><a href="#stack" data-section="stack">Stack</a></li>
+        <li>
+            <a href="#doswiadczenie" data-section="doswiadczenie"
+                >Doświadczenie</a
+            >
+        </li>
+        <li><a href="#kontakt" data-section="kontakt">Kontakt</a></li>
+    </ul>
+</nav>
 
 <style>
+    .nav-pc {
+        display: none;
+    }
     .menu-pc {
         display: none;
         width: auto;
@@ -67,6 +78,11 @@
     @media screen and (min-width: 1024px) {
         .menu-pc {
             display: flex;
+        }
+    }
+    @media screen and (min-width: 1024px) {
+        .nav-pc {
+            display: block;
         }
     }
 </style>
