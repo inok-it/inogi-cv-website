@@ -16,16 +16,21 @@ export default defineConfig({
             weight: 400,
             style: "normal",
             src: ["./src/assets/fonts/inter-400.woff2"],
+            display: 'swap'
+
           },
           {
             weight: 700,
             style: "normal",
             src: ["./src/assets/fonts/inter-700.woff2"],
+            display: 'swap'
+
           },
           {
             weight: 900,
             style: "normal",
             src: ["./src/assets/fonts/inter-900.woff2"],
+            display: 'swap'
           },
         ],
       },
@@ -41,6 +46,7 @@ export default defineConfig({
             weight: 400,
             style: "normal",
             src: ["./src/assets/fonts/jetbrains-mono-400.woff2"],
+            display: 'swap'
           },
         ],
       },
