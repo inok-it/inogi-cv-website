@@ -4,12 +4,14 @@ interface Props {
     description?: string;
     canonicalUrl?: string;
     ogImage?: string;
+    umamiWebsiteId?: string;
 }
 
 const {
     title = "INOGI — IT Support & Sysadmin | Niezawodna infrastruktura",
     description = "Szybki troubleshooting. Bezpieczne systemy. Mniej przestojów. Łączę administrację serwerami, automatyzację i wsparcie IT.",
     ogImage = "/og_image.png",
+    umamiWebsiteId = "64b5cdab-2e61-46e0-8438-ad00c0ba212b",
 } = Astro.props;
 
 const siteUrl = Astro.site ? Astro.site.origin : Astro.url.origin;
@@ -101,3 +103,8 @@ const jsonLd = {
 
 <!-- Dane strukturalne JSON-LD -->
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<script
+    is:inline
+    defer
+    src="https://umami.inogi.pl/script.js"
+    data-website-id={umamiWebsiteId}></script>
