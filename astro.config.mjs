@@ -54,4 +54,7 @@ export default defineConfig({
   ],
   site: "https://inogi.pl",
   integrations: [sitemap()],
+  build: {
+        inlineStylesheets: "always",
+    }
 });
