@@ -90,7 +90,7 @@ Statyczna strona typu One-Page pełniąca rolę interaktywnego CV oraz wizytówk
 
 1. **Sklonuj repozytorium:**
 ```bash
-git clone [https://github.com/inok-it/inogi-cv.git](https://github.com/inok-it/inogi-cv.git)
+git clone [https://github.com/inok-it/inogi-cv-website.git](https://github.com/inok-it/inogi-cv-website.git)
 cd inogi-cv
 
 ```
