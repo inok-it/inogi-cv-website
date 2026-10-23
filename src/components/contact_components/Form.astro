@@ -181,3 +181,32 @@
         }
     }
 </style>
+
+<script>
+    const contactForm = document.querySelector<HTMLFormElement>(
+        "#kontakt form, form",
+    );
+
+    if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const name =
+                (formData.get("name") as string)?.trim() || "Brak danych";
+            const email =
+                (formData.get("email") as string)?.trim() || "Brak adresu";
+            const message = (formData.get("text") as string)?.trim() || "";
+
+            const recipient = "kontakt@inogi.pl";
+            const subject = encodeURIComponent(
+                `Współpraca IT — wiadomość od: ${name}`,
+            );
+            const body = encodeURIComponent(
+                `Imię / Firma: ${name}\nAdres e-mail: ${email}\n\nWiadomość:\n${message}`,
+            );
+
+            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+        });
+    }
+</script>

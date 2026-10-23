@@ -2,7 +2,7 @@
 import Form from "./contact_components/Form.astro";
 ---
 
-<section id="contact">
+<section id="kontakt">
     <div class="contact-wrapper">
         <div class="contact-header">
             <p class="contact-subheader">05 / LET'S CONNECT</p>
@@ -16,7 +16,7 @@ import Form from "./contact_components/Form.astro";
                 Chętnie porozmawiam o Twojej infrastrukturze, wyzwaniach zespołu i
                 tym, jak mogę pomóc.
             </p>
-            <div class="copy-button-header">
+            <div class="copy-button-header card-hover">
                 <div class="icon-and-contact-wrapper">
                     <span class="icon-wrapper">
                         <svg
@@ -42,7 +42,7 @@ import Form from "./contact_components/Form.astro";
                     </span>
                     <div class="contact-info">
                         <span>BEZPOŚREDNI KONTAKT</span>
-                        <p>kontakt@example.com</p>
+                        <p>kontakt@inogi.pl</p>
                     </div>
                 </div>
 
@@ -359,3 +359,35 @@ import Form from "./contact_components/Form.astro";
         }
     }
 </style>
+
+<script>
+    const copyBtn = document.querySelector<HTMLButtonElement>(".copy-btn");
+    const emailElement =
+        document.querySelector<HTMLParagraphElement>(".contact-info > p");
+
+    if (copyBtn && emailElement) {
+        const originalHTML = copyBtn.innerHTML;
+
+        copyBtn.addEventListener("click", async () => {
+            const email =
+                emailElement.textContent?.trim() || "kontakt@example.com";
+            try {
+                await navigator.clipboard.writeText(email);
+                copyBtn.textContent = "✓ Skopiowano";
+                copyBtn.style.color = "#42d6a0";
+
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalHTML;
+                    copyBtn.style.color = "";
+                }, 20000);
+            } catch {
+                const textarea = document.createElement("textarea");
+                textarea.value = email;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
+            }
+        });
+    }
+</script>

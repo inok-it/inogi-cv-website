@@ -91,7 +91,34 @@
         border-radius: 10px;
         border: 2px solid #2a3c50;
         background-color: #0b1422;
+
+        box-shadow:
+            0 20px 50px -12px rgba(9, 16, 32, 0.9),
+            0 0 40px -5px rgba(66, 214, 160, 0.18);
+        transition:
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            border-color 0.35s ease,
+            box-shadow 0.35s ease;
     }
+
+    .terminal::before {
+        content: "";
+        position: absolute;
+        inset: -1.25rem;
+        z-index: -1;
+        border-radius: 24px;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+    }
+
+    .terminal:hover {
+        transform: rotate(0deg) translateY(-4px);
+        border-color: #3b5a75;
+        box-shadow:
+            0 24px 60px -12px rgba(9, 16, 32, 0.95),
+            0 0 55px 0px rgba(66, 214, 160, 0.28);
+    }
+
     .terminal-nav {
         display: flex;
         justify-content: space-between;
@@ -228,6 +255,25 @@
         margin-right: 0.5rem;
     }
 
+    .block-cmd {
+        display: inline-block;
+        width: 0.5rem;
+        height: 1rem;
+        background-color: #e3eaf4;
+        vertical-align: middle;
+        animation: terminal-cursor-blink 2s step-end infinite;
+    }
+
+    @keyframes terminal-cursor-blink {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+    }
+
     @media screen and (min-width: 480px) {
         .second-command-result {
             grid-template-columns: repeat(2, 1fr);
@@ -243,6 +289,15 @@
     @media screen and (min-width: 1024px) {
         .status-terminal {
             right: -0.5rem;
+        }
+
+        .terminal {
+            transform: perspective(1000px) rotateY(-4deg) rotateX(2deg)
+                rotateZ(-1.5deg);
+        }
+        .terminal:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg)
+                rotateZ(0deg) translateY(-4px);
         }
     }
 </style>

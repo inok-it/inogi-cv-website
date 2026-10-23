@@ -62,44 +62,45 @@
 </div>
 
 <menu class="menu-mobile">
-    <li><a href="#">Kompetencje</a></li>
-    <li><a href="#">Homelab & Projekty</a></li>
-    <li><a href="#">Stack technologiczny</a></li>
-    <li><a href="#">Doświadczenie</a></li>
-    <li><a href="#">Kontakt</a></li>
+    <li><a href="#kompetencje">Kompetencje</a></li>
     <li>
-        <button class="download-btn hide-download-btn-more-than-500px">
-            <svg
-                width="13"
-                height="18"
-                viewBox="0 0 13 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <path
-                    d="M11.375 10.625V12.7917C11.375 13.079 11.2609 13.3545 11.0577 13.5577C10.8545 13.7609 10.579 13.875 10.2917 13.875H2.70833C2.42102 13.875 2.14547 13.7609 1.9423 13.5577C1.73914 13.3545 1.625 13.079 1.625 12.7917V10.625"
-                    stroke-width="0.920833"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke="#E8EEF6"></path>
-                <path
-                    d="M3.79167 7.91675L6.5 10.6251L9.20833 7.91675"
-                    stroke-width="0.920833"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke="#E8EEF6"></path>
-                <path
-                    d="M6.5 10.625V4.125"
-                    stroke-width="0.920833"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke="#E8EEF6"></path>
-            </svg>
-            Pobierz CV
-        </button>
+        <a href="#homelab">Homelab & Projekty</a>
+        <li><a href="#stack">Stack technologiczny</a></li>
+        <li><a href="#doswiadczenie">Doświadczenie</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li>
+            <button class="download-btn hide-download-btn-more-than-500px">
+                <svg
+                    width="13"
+                    height="18"
+                    viewBox="0 0 13 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M11.375 10.625V12.7917C11.375 13.079 11.2609 13.3545 11.0577 13.5577C10.8545 13.7609 10.579 13.875 10.2917 13.875H2.70833C2.42102 13.875 2.14547 13.7609 1.9423 13.5577C1.73914 13.3545 1.625 13.079 1.625 12.7917V10.625"
+                        stroke-width="0.920833"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#E8EEF6"></path>
+                    <path
+                        d="M3.79167 7.91675L6.5 10.6251L9.20833 7.91675"
+                        stroke-width="0.920833"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#E8EEF6"></path>
+                    <path
+                        d="M6.5 10.625V4.125"
+                        stroke-width="0.920833"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#E8EEF6"></path>
+                </svg>
+                Pobierz CV
+            </button>
+        </li>
     </li>
 </menu>
-
 <style>
     .button-wrapper {
         display: flex;
@@ -254,5 +255,28 @@
         menuBtn.addEventListener("click", () => {
             menu.classList.toggle("show-menu");
         });
+
+        menu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                menu.classList.remove("show-menu");
+            });
+        });
     }
+
+    const downloadButtons = document.querySelectorAll(".download-btn");
+    downloadButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const emptyBlob = new Blob([""], {
+                type: "text/plain;charset=utf-8",
+            });
+            const url = URL.createObjectURL(emptyBlob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "CV_INOGI.txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    });
 </script>

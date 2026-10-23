@@ -11,7 +11,7 @@ interface Props {
 const { icon, title, skill_count, paragraph, tags, summary } = Astro.props;
 ---
 
-<article class="card">
+<article class="card card-hover">
     <header class="card-header">
         <div class="icon-wrapper" set:html={icon} />
         <span class="skill-count">{skill_count}</span>

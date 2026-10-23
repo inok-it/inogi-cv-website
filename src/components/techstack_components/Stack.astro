@@ -8,7 +8,7 @@ interface Props {
 const { icon, title, tags } = Astro.props;
 ---
 
-<div class="skill-stack">
+<div class="skill-stack card-hover">
     <div class="title-and-icon-wrapper">
         <div class="icon-wrapper" set:html={icon} />
         <h3>{title}</h3>

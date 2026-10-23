@@ -1,6 +1,8 @@
 // astro.config.mjs
 import { defineConfig, fontProviders } from "astro/config";
 
+import sitemap from "@astrojs/sitemap";
+
 export default defineConfig({
   fonts: [
     {
@@ -44,4 +46,6 @@ export default defineConfig({
       },
     },
   ],
+  site: "https://inogi.pl",
+  integrations: [sitemap()],
 });
