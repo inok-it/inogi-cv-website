@@ -33,3 +33,32 @@ import Homelab from "../components/Homelab.astro";
 		flex-direction: column;
 	}
 </style>
+
+<script>
+	const initCvDownloadButtons = (): void => {
+		const downloadButtons =
+			document.querySelectorAll<HTMLButtonElement>("[data-download-cv]");
+		if (!downloadButtons.length) return;
+
+		const triggerDownload = (): void => {
+			const dir = "bq";
+			const partA = "7f7ab2c5";
+			const partB = "c0e6c3d6";
+
+			const link = document.createElement("a");
+			link.href = `/${dir}/${partA}${partB}`;
+			link.download = "Patryk_Polak_CV.pdf";
+			link.rel = "noindex, nofollow";
+
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		};
+
+		downloadButtons.forEach((button) => {
+			button.addEventListener("click", triggerDownload);
+		});
+	};
+
+	initCvDownloadButtons();
+</script>

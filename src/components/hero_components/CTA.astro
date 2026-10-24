@@ -21,11 +21,11 @@
                 stroke="#091522"></path>
         </svg>
     </a>
-    <a
-        href="data:text/plain;charset=utf-8,"
-        download="CV_INOGI.txt"
+    <button
+        data-download-cv
+        type="button"
         class="card-hover"
-        data-umami-event="Hero - Pobierz CV"
+        data-umami-event="Pobranie-CV-PDF"
         ><svg
             width="18"
             height="18"
@@ -52,7 +52,7 @@
                 stroke-linejoin="round"
                 stroke="#E8EEF6"></path>
         </svg>
-        Pobierz CV</a
+        Pobierz CV</button
     >
 </div>
 
@@ -67,7 +67,8 @@
         font-size: var(--text-base);
         gap: 0.75rem;
     }
-    a {
+    a,
+    button {
         display: flex;
         flex-wrap: nowrap;
         text-decoration: none;
@@ -81,22 +82,24 @@
         white-space: nowrap;
         transition: all 0.2s ease;
     }
-    a:first-of-type {
+    a {
         background-color: #7cc6fe;
         color: #091020;
         font-weight: 600;
     }
-    a:last-of-type {
+    button {
         border: 2px solid #202c3e;
         color: #e8eef6;
+        cursor: pointer;
+        background-color: transparent;
     }
-    a:last-of-type > svg {
+    button > svg {
         margin-right: 0.5rem;
     }
     a:hover {
         transform: translateY(-2px);
     }
-    a:last-of-type:hover {
+    button:hover {
         background-color: rgba(124, 198, 254, 0.1);
         border-color: #7cc6fe;
     }
@@ -110,7 +113,8 @@
         div {
             gap: 1rem;
         }
-        a {
+        a,
+        button {
             padding-inline: 1.125rem;
         }
     }

@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 
 Disallow: /*?*utm_
+Disallow: /*.pdf$
+Disallow: /bq/
 
 Sitemap: https://inogi.pl/sitemap-index.xml

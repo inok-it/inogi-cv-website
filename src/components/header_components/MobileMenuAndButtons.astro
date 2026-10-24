@@ -4,8 +4,10 @@
 
 <div class="button-wrapper">
     <button
+        type="button"
         class="download-btn hide-download-btn-less-than-500px"
         data-umami-event="Header - Pobierz CV"
+        data-download-cv
     >
         <svg
             width="13"
@@ -85,6 +87,7 @@
         <li>
             <button
                 type="button"
+                data-download-cv
                 class="download-btn hide-download-btn-more-than-500px"
                 data-umami-event="Mobile Menu - Pobierz CV"
             >
@@ -301,21 +304,4 @@
             });
         });
     }
-
-    const downloadButtons = document.querySelectorAll(".download-btn");
-    downloadButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            const emptyBlob = new Blob([""], {
-                type: "text/plain;charset=utf-8",
-            });
-            const url = URL.createObjectURL(emptyBlob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = "CV_INOGI.txt";
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        });
-    });
 </script>
