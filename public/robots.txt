@@ -1,8 +1,14 @@
 User-agent: *
 Allow: /
+Allow: /en/
+
+
+Disallow: /404
+Disallow: /en/404
 
 Disallow: /*?*utm_
 Disallow: /*.pdf$
 Disallow: /bq/
+Disallow: /ef/
 
 Sitemap: https://inogi.pl/sitemap-index.xml
