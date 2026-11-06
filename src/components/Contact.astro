@@ -7,14 +7,16 @@ import Form from "./contact_components/Form.astro";
         <div class="contact-header">
             <p class="contact-subheader">05 / LET'S CONNECT</p>
             <h2 id="heading-kontakt">
-                Szukasz samodzielnego eksperta do zadań technicznych?<br /><span
-                    >Porozmawiajmy.</span
+                Szukasz zaangażowanego administratora lub specjalisty wsparcia
+                IT do swojego zespołu?<br /><span
+                    >Porozmawiajmy o współpracy.</span
                 >
             </h2>
             <p class="paragraph-header">
-                Szukasz administratora Linux, wsparcia DevOps lub osoby do
-                utrzymania infrastruktury?<br /> Chętnie porozmawiam o wyzwaniach
-                w Twoim zespole i tym, jak mogę pomóc.
+                Szukam stałego miejsca w zespole IT (IT Support, Help Desk,
+                Junior Linux / System Administrator, NOC). Jestem dostępny od
+                zaraz w pełnym wymiarze godzin — stacjonarnie lub hybrydowo we
+                Wrocławiu i Opolu oraz zdalnie w całej Polsce.
             </p>
             <div class="copy-button-header card-hover">
                 <div class="icon-and-contact-wrapper">
@@ -75,9 +77,13 @@ import Form from "./contact_components/Form.astro";
                     Kopiuj
                 </button>
             </div>
+            <p class="tags">
+                Wrocław / Opole / Zdalnie · Prawo jazdy kat. B <br /> Gotowość do
+                pracy zmianowej · Angielski B2
+            </p>
             <div class="header-icons-sm">
                 <a
-                    href="https://pl.linkedin.com/in/patryk-polak-4437b9445"
+                    href="https://pl.linkedin.com/in/patryk-p-4437b9445"
                     class="sm-icon"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -321,6 +327,21 @@ import Form from "./contact_components/Form.astro";
 
     .copy-btn:hover {
         color: #7cc6fe;
+    }
+
+    .tags {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.375rem;
+        color: #7e8ca1;
+        font-size: var(--text-xs);
+        font-family: var(--font-mono);
+        line-height: 1.4;
+    }
+
+    svg {
+        flex-shrink: 0;
     }
 
     .header-icons-sm {

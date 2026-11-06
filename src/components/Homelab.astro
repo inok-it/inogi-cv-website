@@ -17,36 +17,42 @@ import Proof from "./homelab_components/Proof.astro";
 
         <div class="list-of-proofs">
             <Proof
-                headerTags={["LINUX", "DEVOPS", "SECURITY"]}
-                title="Bezpieczny serwer Linux"
-                newLineTitle="& własna platforma PaaS"
-                challenge="publiczny VPS i wiele usług."
-                solution="hardening Ubuntu, izolacja kontenerów, reverse proxy z automatycznym TLS i procedura odtwarzania po awarii"
-                tags={["Ubuntu", "Docker", "Traefik", "UFW"]}
+                headerTags={["LINUX", "ANSIBLE", "SECURITY"]}
+                title="Automatyzacja i Hardening"
+                newLineTitle="Infrastruktury Linux VPS (IaC)"
+                challenge="ręczna konfiguracja publicznego VPS i ekspozycja usług."
+                solution="9-modułowe repozytorium runbooków i playbooków Ansible (zgodnych z ansible-lint) stawiające utwardzony serwer Ubuntu LTS w mniej niż 3h. Wynik 83/100 pkt w audycie Lynis, SSH Key-Only (FIDO2/YubiKey), Traefik + Authentik SSO i redukcja ruchu botów o ~99% przez Cloudflare WAF."
+                tags={["Ansible", "Ubuntu LTS", "Traefik", "Cloudflare WAF"]}
+                githubUrl="https://github.com/inok-it/vps-linux-hardening-paas"
+                githubLabel="Zobacz Runbooki i kod na GitHub ->"
                 headerType="no-code"
                 statusTag="INFRASTRUCTURE"
                 lab="LAB_01"
                 iconSet={1}
             />
             <Proof
-                headerTags={["SSO", "MONITORING", "ZERO TRUST"]}
-                title="Jedno logowanie."
-                newLineTitle="Pełna widoczność infrastruktury."
-                challenge="rozproszone konta i brak alertów."
-                solution="centralne SSO, agregacja logów i monitoring usług z powiadomieniami push oraz webhookami w czasie rzeczywistym."
-                tags={["Authentik", "Uptime Kuma", "ntfy", "Dozzle"]}
+                headerTags={["CONTAINERS", "CACHE", "BACKUP 3-2-1"]}
+                title="Izolowane Środowisko"
+                newLineTitle="Produkcyjne dla Usług Webowych (Single-Tenant)"
+                challenge="wąskie gardła wydajności, izolacja usług i ochrona danych."
+                solution="Odseparowane kontenery aplikacyjne, MariaDB i Redis za reverse proxy Traefik. Czterowarstwowy cache (Edge, Page, Redis, OPCache), sekrety SMTP poza bazą danych oraz automatyczne kopie zapasowe 3-2-1 do pamięci obiektowej Cloudflare R2 z testami odtwarzania."
+                tags={["Docker", "MariaDB", "Redis", "Cloudflare R2"]}
+                githubUrl="https://github.com/inok-it/woocommerce-self-hosted-security-cloudflare"
+                githubLabel="Zobacz Runbooki i kod na GitHub ->"
                 headerType="no-code"
-                statusTag="IDENTITY & OBSERVABILITY"
+                statusTag="SINGLE-TENANT"
                 lab="LAB_02"
                 iconSet={2}
             />
             <Proof
-                headerTags={["SCRIPTING", "BACKUP", "OPERATIONS"]}
-                title="Powtarzalne zadania?"
-                newLineTitle="Od tego jest Bash."
-                challenge="ręczne, podatne na błędy operacje."
-                solution="skrypty tworzenia baz, zarządzania uprawnieniami, rotacji logów i szyfrowanych kopii zapasowych do chmury."
-                tags={["Bash", "Cron", "MariaDB", "S3 / R2"]}
+                headerTags={["BASH", "DIAGNOSTICS", "OPERATIONS"]}
+                title="Diagnostyka CLI, Skrypty"
+                newLineTitle="Utrzymaniowe Bash i Obsługa Incydentów"
+                challenge="ręczna diagnostyka, ryzyko cichych awarii i błędów ludzkich."
+                solution="Zestaw procedur operacyjnych (SOP) i skryptów Bash/Cron automatyzujących szyfrowane zrzuty baz danych, weryfikację integralności plików (Debsums, Rkhunter), analizę logów systemd/journalctl oraz natychmiastowe alerty push o awariach."
+                tags={["Bash / Cron", "journalctl", "Rkhunter", "ntfy"]}
+                githubUrl="https://github.com/inok-it/vps-linux-hardening-paas"
+                githubLabel="Zobacz Runbooki i kod na GitHub ->"
                 headerType="code"
                 statusTag="AUTOMATION"
                 lab="LAB_03"

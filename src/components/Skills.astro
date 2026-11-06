@@ -31,8 +31,8 @@ const securityIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none
                     Trzy filary. Jeden standard pracy.
                 </h2>
                 <p class="subtitle">
-                    Stabilność lwa. Zwinność kozła. Czujność węża. W praktyce —
-                    solidne IT.
+                    Od rozwiązywania zgłoszeń użytkowników i diagnostyki sieci,
+                    po automatyzację i utwardzanie serwerów.
                 </p>
             </div>
         </div>
@@ -41,36 +41,45 @@ const securityIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none
             <Skill
                 icon={serverIcon}
                 skill_count="01 / INFRASTRUKTURA"
-                title="PaaS, Docker i Automatyzacja"
-                paragraph="Projektowanie, automatyzacja i utrzymanie środowisk produkcyjnych na serwerach VPS. Izolowane kontenery zarządzane przez Docker, Coolify i Traefik reverse proxy z użyciem Ansible."
-                tags={["Ubuntu", "Ansible", "Coolify", "Docker", "Traefik"]}
+                title="Administracja Linux, Docker i Automatyzacja"
+                paragraph="Konfiguracja i utrzymanie środowisk Ubuntu Server i Debian z poziomu CLI. Konteneryzacja usług (Docker Compose, Traefik) oraz powtarzalne wdrażanie konfiguracji przez playbooki Ansible."
+                tags={[
+                    "Ubuntu LTS",
+                    "Debian",
+                    "Ansible",
+                    "Docker",
+                    "Systemd",
+                    "Bash",
+                ]}
                 summary="Nowoczesna, automatyzowana infrastruktura"
             />
             <Skill
                 icon={networkIcon}
-                skill_count="02 / E-COMMERCE"
-                title="Wydajny WordPress i WooCommerce"
-                paragraph="Projektowanie i utrzymanie wysoce wydajnych, izolowanych sklepów internetowych. Wielopoziomowe buforowanie (Redis, WP Super Cache, OPCache) i optymalizacja bazy danych."
+                skill_count="02 / WSPARCIE"
+                title="Wsparcie IT (Help Desk), Sieci i Windows"
+                paragraph="Diagnostyka stacji roboczych Windows 10/11 i sprzętu PC, wdrożenia sieciowe LAN/PXE, podstawowa administracja Active Directory i GPO, konfiguracja stref DNS, certyfikatów SSL/TLS oraz poczty (SPF, DKIM, DMARC)."
                 tags={[
-                    "WordPress",
-                    "WooCommerce",
-                    "Redis",
-                    "OPCache",
-                    "Wydajność",
+                    "Windows 10/11",
+                    "Active Directory / GPO",
+                    "LAN / PXE",
+                    "DNS / DHCP",
+                    "SMTP / DMARC",
+                    "ERP Subiekt GT",
                 ]}
                 summary="Sklepy zoptymalizowane pod obciążenie"
             />
             <Skill
                 icon={securityIcon}
                 skill_count="03 / BEZPIECZEŃSTWO"
-                title="Hardening i Zero Trust"
-                paragraph="Ochrona na poziomie sieci i aplikacji: Cloudflare WAF, uwierzytelnianie Authentik z kluczami YubiKey (FIDO2) oraz automatyczne kopie zapasowe szyfrowane w Cloudflare R2."
+                title="Hardening, Monitoring i Kopie 3-2-1"
+                paragraph="Wielowarstwowa ochrona usług: SSH z kluczami FIDO2/YubiKey, zapory UFW i Cloudflare WAF, SSO z Authentik, monitoring dostępności i logów w czasie rzeczywistym oraz szyfrowane backupy z procedurą Disaster Recovery."
                 tags={[
+                    "UFW & Fail2Ban",
+                    "YubiKey FIDO2",
                     "Cloudflare WAF",
-                    "Zero Trust",
-                    "Authentik",
-                    "YubiKey",
-                    "Backup R2",
+                    "Lynis 83/100",
+                    "Uptime Kuma",
+                    "Backup 3-2-1",
                 ]}
                 summary="Defense-in-depth i pełna kontrola dostępu"
             />

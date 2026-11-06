@@ -30,6 +30,13 @@
         --text-h1: clamp(1.75rem, 1.182rem + 2.841vw, 3rem);
     }
 
+    @media screen and (min-width: 1025px) and (max-height: 800px) {
+        :root {
+            --text-lead: 1.05rem; /* Zamiast osiągać 1.25rem, zatrzymuje się na 1.05rem */
+            --text-h1: 2.35rem; /* Zmniejszono maksymalne 3rem dla bohatera nagłówkowego */
+        }
+    }
+
     html {
         font-family: var(--font-sans);
         font-size: 16px;

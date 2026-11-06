@@ -8,8 +8,8 @@ interface Props {
 }
 
 const {
-    title = "INOGI — IT Support & Sysadmin | Niezawodna infrastruktura",
-    description = "Szybki troubleshooting. Bezpieczne systemy. Mniej przestojów. Łączę administrację serwerami, automatyzację i wsparcie IT.",
+    title = "Patryk Polak — IT Support Specialist & Junior Linux / System Administrator (Wrocław / Opole / Zdalnie)",
+    description = "Inżynier Informatyki i Technik Informatyk (E.12, E.13, E.14). Administracja serwerami Linux (Ubuntu, Debian, Docker, Ansible), wsparcie IT (Help Desk, Windows 10/11, AD/GPO, LAN/PXE), sieci (DNS, SPF/DKIM/DMARC) i monitoring.",
     ogImage = "/og_image.png",
     umamiWebsiteId = "64b5cdab-2e61-46e0-8438-ad00c0ba212b",
 } = Astro.props;
@@ -24,8 +24,9 @@ const jsonLd = {
     dateModified: "2026-10-22",
     mainEntity: {
         "@type": "Person",
-        name: "INOGI",
-        alternateName: "INOGI IT Support & Sysadmin",
+        name: "Patryk Polak",
+        alternateName:
+            "Patryk Polak — IT Support Specialist & Junior Linux / System Administrator",
         jobTitle: "IT Support Specialist & Linux Administrator",
         description: description,
         url: canonicalUrl,
@@ -39,10 +40,8 @@ const jsonLd = {
             "Linux System Administration",
             "Ubuntu Server LTS",
             "Linux Hardening",
-            "Coolify PaaS",
             "Docker & Containerization",
             "Traefik Reverse Proxy",
-            "WordPress & WooCommerce Deployment",
             "MariaDB & Redis Caching",
             "Zero Trust Security",
             "Cloudflare WAF & R2 Storage",
@@ -54,7 +53,7 @@ const jsonLd = {
         ],
         sameAs: [
             "https://github.com/inok-it",
-            "https://pl.linkedin.com/in/patryk-polak-4437b9445",
+            "https://pl.linkedin.com/in/patryk-p-4437b9445",
         ],
     },
 };
@@ -79,7 +78,10 @@ const jsonLd = {
 <meta property="og:type" content="profile" />
 <meta property="og:locale" content="pl_PL" />
 <meta property="og:url" content={canonicalUrl} />
-<meta property="og:site_name" content="INOGI — IT Support & Sysadmin" />
+<meta
+    property="og:site_name"
+    content="Patryk Polak — IT Support Specialist & Junior Linux / System Administrator"
+/>
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={absoluteOgImage} />
@@ -87,7 +89,7 @@ const jsonLd = {
 <meta property="og:image:height" content="630" />
 <meta
     property="og:image:alt"
-    content="INOGI — IT Support & Linux Administrator"
+    content="Patryk Polak — IT Support Specialist & Junior Linux / System Administrator"
 />
 <meta property="og:image:secure_url" content={absoluteOgImage} />
 <meta property="og:image:type" content="image/png" />
