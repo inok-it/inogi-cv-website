@@ -12,6 +12,10 @@ const content = {
         textLabel: "Treść wiadomości (np. rola, lokalizacja, termin rozmowy)",
         textPlaceholder: "Cześć! Szukamy osoby, która...",
         submitBtn: "Wyślij wiadomość",
+        sendingBtn: "Wysyłanie...",
+        successMsg: "Wiadomość wysłana! Odezwę się wkrótce.",
+        errorMsg: "Błąd wysyłania. Spróbuj ponownie lub napisz bezpośrednio.",
+        statusDefault: "Odpisuję zazwyczaj w ciągu 24 godzin.",
         umamiEvent: "Formularz - Wyślij wiadomość",
     },
     en: {
@@ -23,6 +27,10 @@ const content = {
         textLabel: "Message body (e.g. role, location, interview date)",
         textPlaceholder: "Hi! We are looking for someone who...",
         submitBtn: "Send message",
+        sendingBtn: "Sending...",
+        successMsg: "Message sent! I'll get back to you soon.",
+        errorMsg: "Error sending. Try again or email me directly.",
+        statusDefault: "I usually reply within 24 hours.",
         umamiEvent: "Form - Send message",
     },
 };
@@ -30,7 +38,7 @@ const content = {
 const t = content[lang];
 ---
 
-<form>
+<form id="contact-form" data-lang={lang}>
     <h3>{t.heading}</h3>
 
     <div class="inputs-grid">
@@ -40,6 +48,7 @@ const t = content[lang];
                 type="text"
                 id="name"
                 name="name"
+                required
                 placeholder={t.namePlaceholder}
             />
         </div>
@@ -49,19 +58,27 @@ const t = content[lang];
                 type="email"
                 id="email"
                 name="email"
+                required
                 placeholder={t.emailPlaceholder}
             />
         </div>
     </div>
 
     <div class="field">
-        <label for="text">{t.textLabel}</label>
-        <textarea name="text" id="text" rows="4" placeholder={t.textPlaceholder}
-        ></textarea>
+        <label for="message">{t.textLabel}</label>
+        <textarea
+            name="message"
+            id="message"
+            rows="4"
+            required
+            placeholder={t.textPlaceholder}></textarea>
     </div>
 
-    <button type="submit" data-umami-event={t.umamiEvent}>
-        {t.submitBtn}
+    <input type="hidden" name="title" value="Nowa wiadomość ze strony Inogi" />
+    <input type="hidden" name="time" id="time-input" value="" />
+
+    <button type="submit" id="submit-btn" data-umami-event={t.umamiEvent}>
+        <span class="btn-text">{t.submitBtn}</span>
         <svg
             width="18"
             height="18"
@@ -83,6 +100,9 @@ const t = content[lang];
                 stroke="#091522"></path>
         </svg>
     </button>
+    <div id="form-status" class="form-status" aria-live="polite">
+        {t.statusDefault}
+    </div>
 </form>
 
 <style>
@@ -171,16 +191,44 @@ const t = content[lang];
         line-height: 1;
         cursor: pointer;
         border: none;
-        transition: transform 0.2s ease;
+        transition:
+            transform 0.2s ease,
+            opacity 0.2s ease,
+            background-color 0.2s ease;
         > svg {
             width: 1.25rem;
             height: 1.25rem;
             flex-shrink: 0;
+            transition: transform 0.2s ease;
         }
     }
-    button:hover {
+
+    button:hover:not(:disabled) {
         transform: translateY(-2px);
     }
+
+    button:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    .form-status {
+        width: 100%;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        text-align: center;
+        min-height: 1.5rem;
+        color: #a0afc3;
+    }
+
+    .status-success {
+        color: #4ade80; /* Zielony dla sukcesu */
+    }
+
+    .status-error {
+        color: #f87171; /* Czerwony dla błędu */
+    }
+
     p {
         margin-inline: auto;
         width: fit-content;
@@ -203,70 +251,91 @@ const t = content[lang];
     }
 </style>
 
-<script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"
-></script>
+<script>
+    import emailjs from "@emailjs/browser";
 
-<script type="text/javascript">
-    (function () {
-        emailjs.init({
-            publicKey: "YOUR_PUBLIC_KEY",
-            blockHeadless: true,
-            blockList: {
-                list: ["foo@emailjs.com", "bar@emailjs.com"],
-                watchVariable: "userEmail",
-            },
-            limitRate: {
-                id: "app",
-                throttle: 10000,
-            },
-        });
-    })();
+    // Konfiguracja Email.js - uzupełnij swoimi danymi z dashboardu Email.js
+    const PUBLIC_KEY = "ZXkiOxaInJT-9l3Up";
+    const SERVICE_ID = "service_j6p2cpw";
+    const TEMPLATE_ID = "template_oz96g4w";
 
-    const templateParams = {
-        name: "James",
-        notes: "Check this out!",
+    // Inicjalizacja biblioteki
+    emailjs.init({
+        publicKey: PUBLIC_KEY,
+        limitRate: {
+            id: "contact-form",
+            throttle: 10000, // Limit wysyłania (10 sekund pomiędzy wysłaniami)
+        },
+    });
+
+    const contactForm =
+        document.querySelector<HTMLFormElement>("#contact-form");
+    const submitBtn = document.querySelector<HTMLButtonElement>("#submit-btn");
+    const btnText = submitBtn?.querySelector(".btn-text");
+    const statusDiv = document.querySelector<HTMLDivElement>("#form-status");
+
+    const messages = {
+        pl: {
+            sending: "Wysyłanie...",
+            default: "Wyślij wiadomość",
+            success: "Wiadomość wysłana! Odezwę się wkrótce.",
+            error: "Błąd wysyłania. Spróbuj ponownie lub napisz bezpośrednio.",
+            statusDefault: "Odpisuję zazwyczaj w ciągu 24 godzin.",
+        },
+        en: {
+            sending: "Sending...",
+            default: "Send message",
+            success: "Message sent! I'll get back to you soon.",
+            error: "Error sending. Try again or email me directly.",
+            statusDefault: "I usually reply within 24 hours.",
+        },
     };
 
-    try {
-        await emailjs.sendForm(
-            "YOUR_SERVICE_ID",
-            "YOUR_TEMPLATE_ID",
-            "#myForm",
-        );
-
-        console.log("Email sent successfully");
-    } catch (error) {
-        console.error("Error sending email - ", error.text);
-    }
-</script>
-
-<script>
-    const contactForm = document.querySelector<HTMLFormElement>(
-        "#kontakt form, form",
-    );
-
-    if (contactForm) {
-        contactForm.addEventListener("submit", (e) => {
+    if (contactForm && submitBtn && btnText && statusDiv) {
+        contactForm.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            const formData = new FormData(contactForm);
-            const name =
-                (formData.get("name") as string)?.trim() || "Brak danych";
-            const email =
-                (formData.get("email") as string)?.trim() || "Brak adresu";
-            const message = (formData.get("text") as string)?.trim() || "";
+            // Pobranie języka z atrybutu formularza
+            const timeInput =
+                contactForm.querySelector<HTMLInputElement>("#time-input");
+            if (timeInput) {
+                timeInput.value = new Date().toLocaleString("pl-PL");
+            }
 
-            const recipient = "kontakt@inogi.pl";
-            const subject = encodeURIComponent(
-                `Współpraca IT — wiadomość od: ${name}`,
-            );
-            const body = encodeURIComponent(
-                `Imię / Firma: ${name}\nAdres e-mail: ${email}\n\nWiadomość:\n${message}`,
-            );
+            const lang =
+                (contactForm.getAttribute("data-lang") as "pl" | "en") || "pl";
+            const t = messages[lang];
 
-            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+            // Czyszczenie poprzednich statusów
+            statusDiv.textContent = "";
+            statusDiv.className = "form-status";
+
+            // Stan ładowania
+            submitBtn.disabled = true;
+            btnText.textContent = t.sending;
+
+            try {
+                await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, contactForm);
+
+                // Sukces
+                statusDiv.textContent = t.success;
+                statusDiv.classList.add("status-success");
+                contactForm.reset();
+            } catch (error) {
+                // Błąd
+                console.error("Error sending email:", error);
+                statusDiv.textContent = t.error;
+                statusDiv.classList.add("status-error");
+            } finally {
+                // Przywrócenie przycisku
+                submitBtn.disabled = false;
+                btnText.textContent = t.default;
+
+                setTimeout(() => {
+                    statusDiv.textContent = t.statusDefault;
+                    statusDiv.className = "form-status";
+                }, 5000);
+            }
         });
     }
 </script>
