@@ -1,6 +1,70 @@
 ---
 import Skill from "./skills_components/Skill.astro";
 
+const currentPath = Astro.url.pathname;
+const lang: "pl" | "en" = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        sectionId: "kompetencje",
+        chapter: "01 / KOMPETENCJE",
+        title: "Trzy filary. Jeden standard pracy.",
+        subtitle:
+            "Od rozwiązywania zgłoszeń użytkowników i diagnostyki sieci, po automatyzację i utwardzanie serwerów.",
+        skill1: {
+            count: "01 / INFRASTRUKTURA",
+            title: "Administracja Linux, Docker i Automatyzacja",
+            paragraph:
+                "Konfiguracja i utrzymanie środowisk Ubuntu Server i Debian z poziomu CLI. Konteneryzacja usług (Docker Compose, Traefik) oraz powtarzalne wdrażanie konfiguracji przez playbooki Ansible.",
+            summary: "Nowoczesna, automatyzowana infrastruktura",
+        },
+        skill2: {
+            count: "02 / WSPARCIE",
+            title: "Wsparcie IT (Help Desk), Sieci i Windows",
+            paragraph:
+                "Diagnostyka stacji roboczych Windows 10/11 i sprzętu PC, wdrożenia sieciowe LAN/PXE, podstawowa administracja Active Directory i GPO, konfiguracja stref DNS, certyfikatów SSL/TLS oraz poczty (SPF, DKIM, DMARC).",
+            summary: "Brak przestojów i płynna praca użytkowników",
+        },
+        skill3: {
+            count: "03 / BEZPIECZEŃSTWO",
+            title: "Hardening, Monitoring i Kopie 3-2-1",
+            paragraph:
+                "Wielowarstwowa ochrona usług: SSH z kluczami FIDO2/YubiKey, zapory UFW i Cloudflare WAF, SSO z Authentik, monitoring dostępności i logów w czasie rzeczywistym oraz szyfrowane backupy z procedurą Disaster Recovery.",
+            summary: "Defense-in-depth i pełna kontrola dostępu",
+        },
+    },
+    en: {
+        sectionId: "skills",
+        chapter: "01 / SKILLS",
+        title: "Three pillars. One work standard.",
+        subtitle:
+            "From resolving user tickets and network diagnostics to server automation and hardening.",
+        skill1: {
+            count: "01 / INFRASTRUCTURE",
+            title: "Linux Administration, Docker & Automation",
+            paragraph:
+                "Configuration and maintenance of Ubuntu Server and Debian environments via CLI. Service containerization (Docker Compose, Traefik) and repeatable deployments using Ansible playbooks.",
+            summary: "Modern, automated infrastructure",
+        },
+        skill2: {
+            count: "02 / SUPPORT",
+            title: "IT Support (Help Desk), Networks & Windows",
+            paragraph:
+                "Diagnostics of Windows 10/11 workstations and PC hardware, LAN/PXE network deployments, basic Active Directory and GPO administration, configuration of DNS zones, SSL/TLS certificates, and email security (SPF, DKIM, DMARC).",
+            summary: "Zero downtime and smooth user operations",
+        },
+        skill3: {
+            count: "03 / SECURITY",
+            title: "Hardening, Monitoring & 3-2-1 Backups",
+            paragraph:
+                "Multi-layered service protection: SSH with FIDO2/YubiKey hardware keys, UFW and Cloudflare WAF firewalls, SSO via Authentik, real-time uptime and log monitoring, and encrypted backups with a Disaster Recovery procedure.",
+            summary: "Defense-in-depth and full access control",
+        },
+    },
+};
+
+const t = content[lang];
+
 const serverIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3.33335 1.66675H16.6667C17.5872 1.66675 18.3334 2.41294 18.3334 3.33341V6.66675C18.3334 7.58722 17.5872 8.33341 16.6667 8.33341H3.33335C2.41288 8.33341 1.66669 7.58722 1.66669 6.66675V3.33341C1.66669 2.41294 2.41288 1.66675 3.33335 1.66675Z" stroke-width="1.41667" stroke-linecap="round" stroke-linejoin="round" stroke="#7CC6FE"/>
 <path d="M3.33335 11.6667H16.6667C17.5872 11.6667 18.3334 12.4129 18.3334 13.3334V16.6667C18.3334 17.5872 17.5872 18.3334 16.6667 18.3334H3.33335C2.41288 18.3334 1.66669 17.5872 1.66669 16.6667V13.3334C1.66669 12.4129 2.41288 11.6667 3.33335 11.6667Z" stroke-width="1.41667" stroke-linecap="round" stroke-linejoin="round" stroke="#7CC6FE"/>
@@ -22,17 +86,16 @@ const securityIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none
 `;
 ---
 
-<section id="kompetencje" aria-labelledby="heading-kompetencje">
+<section id={t.sectionId} aria-labelledby="heading-kompetencje">
     <div class="skills-wrapper">
         <div class="section-header">
             <div class="header-titles">
-                <p class="chapter">01&ensp;/&ensp;KOMPETENCJE</p>
+                <p class="chapter">{t.chapter}</p>
                 <h2 id="heading-kompetencje">
-                    Trzy filary. Jeden standard pracy.
+                    {t.title}
                 </h2>
                 <p class="subtitle">
-                    Od rozwiązywania zgłoszeń użytkowników i diagnostyki sieci,
-                    po automatyzację i utwardzanie serwerów.
+                    {t.subtitle}
                 </p>
             </div>
         </div>
@@ -40,9 +103,9 @@ const securityIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none
         <div class="skills-container">
             <Skill
                 icon={serverIcon}
-                skill_count="01 / INFRASTRUKTURA"
-                title="Administracja Linux, Docker i Automatyzacja"
-                paragraph="Konfiguracja i utrzymanie środowisk Ubuntu Server i Debian z poziomu CLI. Konteneryzacja usług (Docker Compose, Traefik) oraz powtarzalne wdrażanie konfiguracji przez playbooki Ansible."
+                skill_count={t.skill1.count}
+                title={t.skill1.title}
+                paragraph={t.skill1.paragraph}
                 tags={[
                     "Ubuntu LTS",
                     "Debian",
@@ -51,13 +114,13 @@ const securityIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none
                     "Systemd",
                     "Bash",
                 ]}
-                summary="Nowoczesna, automatyzowana infrastruktura"
+                summary={t.skill1.summary}
             />
             <Skill
                 icon={networkIcon}
-                skill_count="02 / WSPARCIE"
-                title="Wsparcie IT (Help Desk), Sieci i Windows"
-                paragraph="Diagnostyka stacji roboczych Windows 10/11 i sprzętu PC, wdrożenia sieciowe LAN/PXE, podstawowa administracja Active Directory i GPO, konfiguracja stref DNS, certyfikatów SSL/TLS oraz poczty (SPF, DKIM, DMARC)."
+                skill_count={t.skill2.count}
+                title={t.skill2.title}
+                paragraph={t.skill2.paragraph}
                 tags={[
                     "Windows 10/11",
                     "Active Directory / GPO",
@@ -66,13 +129,13 @@ const securityIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none
                     "SMTP / DMARC",
                     "ERP Subiekt GT",
                 ]}
-                summary="Sklepy zoptymalizowane pod obciążenie"
+                summary={t.skill2.summary}
             />
             <Skill
                 icon={securityIcon}
-                skill_count="03 / BEZPIECZEŃSTWO"
-                title="Hardening, Monitoring i Kopie 3-2-1"
-                paragraph="Wielowarstwowa ochrona usług: SSH z kluczami FIDO2/YubiKey, zapory UFW i Cloudflare WAF, SSO z Authentik, monitoring dostępności i logów w czasie rzeczywistym oraz szyfrowane backupy z procedurą Disaster Recovery."
+                skill_count={t.skill3.count}
+                title={t.skill3.title}
+                paragraph={t.skill3.paragraph}
                 tags={[
                     "UFW & Fail2Ban",
                     "YubiKey FIDO2",
@@ -81,7 +144,7 @@ const securityIcon = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none
                     "Uptime Kuma",
                     "Backup 3-2-1",
                 ]}
-                summary="Defense-in-depth i pełna kontrola dostępu"
+                summary={t.skill3.summary}
             />
         </div>
     </div>
