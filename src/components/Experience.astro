@@ -1,132 +1,212 @@
 ---
 import Exp from "./experience_components/Exp.astro";
+
+const currentPath = Astro.url.pathname;
+const lang: "pl" | "en" = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        sectionId: "doswiadczenie",
+        chapter: "04&ensp;/&ensp;DOŚWIADCZENIE",
+        title: "Praktyka buduje pewność działania.",
+        subtitle:
+            "Rozwijam kompetencje tam, gdzie widać efekty: w działających usługach, rozwiązanych zgłoszeniach i dobrze udokumentowanych wdrożeniach.",
+        exp1: {
+            header: "09.2026 – Obecnie | Projekty komercyjne i Homelab (INOGI)",
+            title: "Wsparcie IT i Administracja Serwerami Linux",
+            tags: "Linux · Docker · Coolify · Traefik · Ansible · Cloudflare",
+            text: "Utrzymanie środowisk VPS i hostingowych (m.in. cyberFolks) dla klientów MŚP: diagnostyka błędów usług, migracje, konfiguracja stref DNS i poczty (SPF, DKIM, DMARC), hardening Ubuntu LTS (83/100 w Lynis), konteneryzacja Docker/Traefik, monitoring 24/7 i automatyczne kopie zapasowe 3-2-1.",
+        },
+        exp2: {
+            header: "08.2020 – 08.2026 | ProLabel (Wrocław)",
+            title: "Młodszy Specjalista ds. Obsługi Systemów i Produkcji Technicznej (6 lat)",
+            tags: "Obsługa klienta · E-commerce · Subiekt GT · Rozwiązywanie problemów technicznych",
+            text: "Kompleksowa obsługa systemu sprzedażowo-magazynowego ERP Subiekt GT, wsparcie techniczne klientów, utrzymanie specjalistycznego oprogramowania RIP oraz serwis parku maszynowego. Samodzielne zarządzanie ciągłością operacyjną firmy podczas wielodniowych wyjazdów właściciela przy jednoczesnych studiach inżynierskich.",
+        },
+        exp3: {
+            header: "05.2018 – 07.2018 | IT DESK (Opole)",
+            title: "Stażysta Działu Serwisu i Wsparcia IT (Help Desk)",
+            tags: "Serwis PC / laptopów · Klonowanie dysków · Odzyskiwanie danych",
+            text: "Skrócenie czasu przygotowania stacji roboczych Windows 10 dla klientów biznesowych o ponad 70% dzięki wdrożeniu instalacji sieciowych LAN/PXE i klonowania dysków. Diagnostyka pamięci RAM i nośników HDD/SSD, naprawy sprzętowe oraz odzyskiwanie danych.",
+        },
+        exp4: {
+            header: "10.2020 – Obecnie | Uniwersytet WSB Merito we Wrocławiu",
+            title: "Inżynier Informatyki (2025) · Studia Magisterskie: Cyberbezpieczeństwo (Urlop dziekański — pełna dyspozycyjność)",
+            tags: "Systemy sieciowe · Cyberbezpieczeństwo",
+            text: "Ukończone studia inżynierskie z informatyki (06.2025). Aktualnie na urlopie dziekańskim na studiach II stopnia (Cyberbezpieczeństwo) — gwarantuję pełną dyspozycyjność w pełnym wymiarze godzin (również w trybie zmianowym).",
+        },
+        exp5: {
+            header: "09.2016 – 04.2020 | Technikum Informatyczne ZSE w Opolu",
+            title: "Dyplomowany Technik Informatyk (E.12, E.13, E.14)",
+            tags: "Diagnostyka · Serwery",
+            text: "Potwierdzone egzaminami państwowymi kwalifikacje w zakresie montażu i serwisu PC/peryferiów (E.12), projektowania lokalnych sieci komputerowych i administracji sieciowymi systemami operacyjnymi (E.13) oraz baz danych i aplikacji webowych (E.14)",
+        },
+    },
+    en: {
+        sectionId: "experience",
+        chapter: "04&ensp;/&ensp;EXPERIENCE",
+        title: "Practice builds operational confidence.",
+        subtitle:
+            "I develop skills where results are visible: in running services, resolved tickets, and well-documented deployments.",
+        exp1: {
+            header: "09.2026 – Present | Commercial Projects & Homelab (INOGI)",
+            title: "IT Support & Linux Server Administrator",
+            tags: "Linux · Docker · Coolify · Traefik · Ansible · Cloudflare",
+            text: "Maintenance of VPS and hosting environments (e.g., cyberFolks) for SME clients: service troubleshooting, migrations, DNS zone and email security configuration (SPF, DKIM, DMARC), Ubuntu LTS hardening (83/100 Lynis score), Docker/Traefik containerization, 24/7 monitoring, and automated 3-2-1 backups.",
+        },
+        exp2: {
+            header: "08.2020 – 08.2026 | ProLabel (Wrocław)",
+            title: "Junior Systems Support & Technical Production Specialist (6 years)",
+            tags: "Customer Service · E-commerce · Subiekt GT · Technical Troubleshooting",
+            text: "Comprehensive management of the Subiekt GT ERP sales and warehouse system, technical customer support, maintenance of specialized RIP software, and machinery servicing. Independent management of company operations during the owner's multi-day absences, concurrently with engineering studies.",
+        },
+        exp3: {
+            header: "05.2018 – 07.2018 | IT DESK (Opole)",
+            title: "IT Support & Service Department Intern (Help Desk)",
+            tags: "PC / Laptop Repair · Disk Cloning · Data Recovery",
+            text: "Reduced preparation time for Windows 10 workstations for business clients by over 70% through LAN/PXE network installations and disk cloning. RAM and HDD/SSD diagnostics, hardware repairs, and data recovery.",
+        },
+        exp4: {
+            header: "10.2020 – Present | WSB Merito University in Wrocław",
+            title: "B.Eng. in Computer Science (2025) · Master's Studies: Cybersecurity (Leave of absence — fully available)",
+            tags: "Network Systems · Cybersecurity",
+            text: "Completed engineering degree in Computer Science (06.2025). Currently on a leave of absence from Master's studies (Cybersecurity) — guaranteeing full availability for full-time work (including shift work).",
+        },
+        exp5: {
+            header: "09.2016 – 04.2020 | IT Technical School ZSE in Opole",
+            title: "Certified IT Technician (E.12, E.13, E.14)",
+            tags: "Diagnostics · Servers",
+            text: "State-certified qualifications in PC and peripheral assembly and servicing (E.12), local computer network design and network OS administration (E.13), and databases and web applications (E.14).",
+        },
+    },
+};
+
+const t = content[lang];
 ---
 
-<section id="doswiadczenie" aria-labelledby="heading-doswiadczenie">
+<section id={t.sectionId} aria-labelledby="heading-doswiadczenie">
     <div class="exp-wrapper">
         <div class="exp-header">
-            <p class="chapter">04&ensp;/&ensp;DOŚWIADCZENIE</p>
-            <h2>Praktyka buduje pewność działania.</h2>
+            <p class="chapter" set:html={t.chapter} />
+            <h2 id="heading-doswiadczenie">{t.title}</h2>
             <p class="subtitle">
-                Rozwijam kompetencje tam, gdzie widać efekty: w działających
-                usługach, rozwiązanych zgłoszeniach i dobrze udokumentowanych
-                wdrożeniach.
+                {t.subtitle}
             </p>
         </div>
         <ol class="exp-content">
             <Exp
-                header="09.2026 – Obecnie | Projekty komercyjne i Homelab (INOGI)"
-                title="Wsparcie IT i Administracja Serwerami Linux"
-                tags="Linux · Docker · Coolify · Traefik · Ansible · Cloudflare"
-                text="Utrzymanie środowisk VPS i hostingowych (m.in. cyberFolks) dla klientów MŚP: diagnostyka błędów usług, migracje, konfiguracja stref DNS i poczty (SPF, DKIM, DMARC), hardening Ubuntu LTS (83/100 w Lynis), konteneryzacja Docker/Traefik, monitoring 24/7 i automatyczne kopie zapasowe 3-2-1."
+                header={t.exp1.header}
+                title={t.exp1.title}
+                tags={t.exp1.tags}
+                text={t.exp1.text}
             />
             <Exp
-                header="08.2020 – 08.2026 | ProLabel (Wrocław)"
-                title="Młodszy Specjalista ds. Obsługi Systemów i Produkcji Technicznej (6 lat)"
-                tags="Obsługa klienta · E-commerce · Subiekt GT · Rozwiązywanie problemów technicznych"
-                text="Kompleksowa obsługa systemu sprzedażowo-magazynowego ERP Subiekt GT, wsparcie techniczne klientów, utrzymanie specjalistycznego oprogramowania RIP oraz serwis parku maszynowego. Samodzielne zarządzanie ciągłością operacyjną firmy podczas wielodniowych wyjazdów właściciela przy jednoczesnych studiach inżynierskich."
+                header={t.exp2.header}
+                title={t.exp2.title}
+                tags={t.exp2.tags}
+                text={t.exp2.text}
             />
             <Exp
-                header="05.2018 – 07.2018 | IT DESK (Opole)"
-                title="Stażysta Działu Serwisu i Wsparcia IT (Help Desk)"
-                tags="Serwis PC / laptopów · Klonowanie dysków · Odzyskiwanie danych"
-                text="Skrócenie czasu przygotowania stacji roboczych Windows 10 dla klientów biznesowych o ponad 70% dzięki wdrożeniu instalacji sieciowych LAN/PXE i klonowania dysków. Diagnostyka pamięci RAM i nośników HDD/SSD, naprawy sprzętowe oraz odzyskiwanie danych."
+                header={t.exp3.header}
+                title={t.exp3.title}
+                tags={t.exp3.tags}
+                text={t.exp3.text}
             />
             <Exp
-                header="10.2020 – Obecnie | Uniwersytet WSB Merito we Wrocławiu"
-                title="Inżynier Informatyki (2025) · Studia Magisterskie: Cyberbezpieczeństwo (Urlop dziekański — pełna dyspozycyjność)"
-                tags="Systemy sieciowe · Cyberbezpieczeństwo"
-                text="Ukończone studia inżynierskie z informatyki (06.2025). Aktualnie na urlopie dziekańskim na studiach II stopnia (Cyberbezpieczeństwo) — gwarantuję pełną dyspozycyjność w pełnym wymiarze godzin (również w trybie zmianowym)."
+                header={t.exp4.header}
+                title={t.exp4.title}
+                tags={t.exp4.tags}
+                text={t.exp4.text}
             />
             <Exp
-                header="09.2016 – 04.2020 | Technikum Informatyczne ZSE w Opolu"
-                title="Dyplomowany Technik Informatyk (E.12, E.13, E.14)"
-                tags="Diagnostyka · Serwery"
-                text="Potwierdzone egzaminami państwowymi kwalifikacje w zakresie montażu i serwisu PC/peryferiów (E.12), projektowania lokalnych sieci komputerowych i administracji sieciowymi systemami operacyjnymi (E.13) oraz baz danych i aplikacji webowych (E.14)"
+                header={t.exp5.header}
+                title={t.exp5.title}
+                tags={t.exp5.tags}
+                text={t.exp5.text}
             />
         </ol>
     </div>
-
-    <style>
-        section {
-            width: 100%;
-            min-width: 20rem; /* 320px */
-            border-bottom: 2px solid #1a2638;
-            padding-block: 3rem;
-        }
-
-        .exp-wrapper {
-            width: 100%;
-            max-width: 83.125rem; /* 1330px */
-            margin-inline: auto;
-            padding-inline: 1rem;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-            align-items: start;
-        }
-
-        .exp-header {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            width: 100%;
-            max-width: 36rem;
-        }
-
-        .chapter {
-            color: #7cc6fe;
-            font-size: var(--text-xs);
-            font-family: var(--font-mono);
-            line-height: 1.4;
-            letter-spacing: 0.02em;
-        }
-        h2 {
-            color: #eaf0f8;
-        }
-        .subtitle {
-            color: #7f8fa5;
-            line-height: 1.6;
-            font-size: var(--text-card);
-        }
-
-        .exp-content {
-            width: 100%;
-            border-left: 2px solid #293b51;
-            list-style: none;
-            margin: 0 0 0 0.375rem;
-            padding: 0 0 0.5rem 1.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2.25rem;
-            align-items: flex-start;
-            justify-content: flex-start;
-        }
-
-        @media screen and (min-width: 768px) {
-            section {
-                padding-block: 4.5rem;
-            }
-            .exp-wrapper {
-                padding-inline: 1.25rem;
-            }
-            .exp-content {
-                padding-left: 1.75rem;
-                gap: 2.5rem;
-            }
-        }
-        @media screen and (min-width: 1024px) {
-            .exp-wrapper {
-                grid-template-columns: minmax(18rem, 22rem) 1fr;
-                gap: 4rem;
-            }
-            .exp-header {
-                max-width: 22rem;
-            }
-            .exp-content {
-                max-width: 48rem;
-                padding-left: 2rem;
-            }
-        }
-    </style>
 </section>
+
+<style>
+    section {
+        width: 100%;
+        min-width: 20rem; /* 320px */
+        border-bottom: 2px solid #1a2638;
+        padding-block: 3rem;
+    }
+
+    .exp-wrapper {
+        width: 100%;
+        max-width: 83.125rem; /* 1330px */
+        margin-inline: auto;
+        padding-inline: 1rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        align-items: start;
+    }
+
+    .exp-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+        max-width: 36rem;
+    }
+
+    .chapter {
+        color: #7cc6fe;
+        font-size: var(--text-xs);
+        font-family: var(--font-mono);
+        line-height: 1.4;
+        letter-spacing: 0.02em;
+    }
+    h2 {
+        color: #eaf0f8;
+    }
+    .subtitle {
+        color: #7f8fa5;
+        line-height: 1.6;
+        font-size: var(--text-card);
+    }
+
+    .exp-content {
+        width: 100%;
+        border-left: 2px solid #293b51;
+        list-style: none;
+        margin: 0 0 0 0.375rem;
+        padding: 0 0 0.5rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2.25rem;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    @media screen and (min-width: 768px) {
+        section {
+            padding-block: 4.5rem;
+        }
+        .exp-wrapper {
+            padding-inline: 1.25rem;
+        }
+        .exp-content {
+            padding-left: 1.75rem;
+            gap: 2.5rem;
+        }
+    }
+    @media screen and (min-width: 1024px) {
+        .exp-wrapper {
+            grid-template-columns: minmax(18rem, 22rem) 1fr;
+            gap: 4rem;
+        }
+        .exp-header {
+            max-width: 22rem;
+        }
+        .exp-content {
+            max-width: 48rem;
+            padding-left: 2rem;
+        }
+    }
+</style>

@@ -1,22 +1,54 @@
 ---
 import Form from "./contact_components/Form.astro";
+
+const currentPath = Astro.url.pathname;
+const lang: "pl" | "en" = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        sectionId: "kontakt",
+        subheader: "05 / LET'S CONNECT",
+        h2Line1:
+            "Szukasz zaangażowanego administratora lub specjalisty wsparcia IT do swojego zespołu?",
+        h2Line2: "Porozmawiajmy o współpracy.",
+        paragraph:
+            "Szukam stałego miejsca w zespole IT (IT Support, Help Desk, Junior Linux / System Administrator, NOC). Jestem dostępny od zaraz w pełnym wymiarze godzin — stacjonarnie lub hybrydowo we Wrocławiu i Opolu oraz zdalnie w całej Polsce.",
+        directContact: "BEZPOŚREDNI KONTAKT",
+        copyAria: "Kopiuj adres e-mail do schowka",
+        copyBtn: "Kopiuj",
+        umamiCopy: "Kontakt - Skopiowano Email",
+        tagsLine1: "Wrocław / Opole / Zdalnie · Prawo jazdy kat. B",
+        tagsLine2: "Gotowość do pracy zmianowej · Angielski B2",
+    },
+    en: {
+        sectionId: "contact",
+        subheader: "05 / LET'S CONNECT",
+        h2Line1:
+            "Looking for a dedicated Linux Administrator or IT Support Specialist for your team?",
+        h2Line2: "Let's talk about cooperation.",
+        paragraph:
+            "I am looking for a permanent position in an IT team (IT Support, Help Desk, Junior Linux / System Administrator, NOC). I am available immediately for full-time work — on-site or hybrid in Wrocław and Opole, and remotely across Poland.",
+        directContact: "DIRECT CONTACT",
+        copyAria: "Copy email address to clipboard",
+        copyBtn: "Copy",
+        umamiCopy: "Contact - Copied Email",
+        tagsLine1: "Wrocław / Opole / Remote · Category B driver's license",
+        tagsLine2: "Open to shift work · English B2",
+    },
+};
+
+const t = content[lang];
 ---
 
-<section id="kontakt" aria-labelledby="heading-kontakt">
+<section id={t.sectionId} aria-labelledby={`heading-${t.sectionId}`}>
     <div class="contact-wrapper">
         <div class="contact-header">
-            <p class="contact-subheader">05 / LET'S CONNECT</p>
-            <h2 id="heading-kontakt">
-                Szukasz zaangażowanego administratora lub specjalisty wsparcia
-                IT do swojego zespołu?<br /><span
-                    >Porozmawiajmy o współpracy.</span
-                >
+            <p class="contact-subheader">{t.subheader}</p>
+            <h2 id={`heading-${t.sectionId}`}>
+                {t.h2Line1}<br /><span>{t.h2Line2}</span>
             </h2>
             <p class="paragraph-header">
-                Szukam stałego miejsca w zespole IT (IT Support, Help Desk,
-                Junior Linux / System Administrator, NOC). Jestem dostępny od
-                zaraz w pełnym wymiarze godzin — stacjonarnie lub hybrydowo we
-                Wrocławiu i Opolu oraz zdalnie w całej Polsce.
+                {t.paragraph}
             </p>
             <div class="copy-button-header card-hover">
                 <div class="icon-and-contact-wrapper">
@@ -43,7 +75,7 @@ import Form from "./contact_components/Form.astro";
                         </svg>
                     </span>
                     <div class="contact-info">
-                        <span>BEZPOŚREDNI KONTAKT</span>
+                        <span>{t.directContact}</span>
                         <p>kontakt@inogi.pl</p>
                     </div>
                 </div>
@@ -51,8 +83,8 @@ import Form from "./contact_components/Form.astro";
                 <button
                     class="copy-btn"
                     type="button"
-                    aria-label="Kopiuj adres e-mail do schowka"
-                    data-umami-event="Kontakt - Skopiowano Email"
+                    aria-label={t.copyAria}
+                    data-umami-event={t.umamiCopy}
                 >
                     <svg
                         width="18"
@@ -74,12 +106,13 @@ import Form from "./contact_components/Form.astro";
                             stroke-linejoin="round"
                             stroke="#9AACC2"></path>
                     </svg>
-                    Kopiuj
+                    {t.copyBtn}
                 </button>
             </div>
             <p class="tags">
-                Wrocław / Opole / Zdalnie · Prawo jazdy kat. B <br /> Gotowość do
-                pracy zmianowej · Angielski B2
+                {t.tagsLine1}
+                <br />
+                {t.tagsLine2}
             </p>
             <div class="header-icons-sm">
                 <a

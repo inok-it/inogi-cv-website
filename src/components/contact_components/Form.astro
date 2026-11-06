@@ -1,44 +1,67 @@
 ---
+const currentPath = Astro.url.pathname;
+const lang: "pl" | "en" = currentPath.startsWith("/en") ? "en" : "pl";
 
+const content = {
+    pl: {
+        heading: "Zacznijmy od wiadomości",
+        nameLabel: "Imię i nazwisko / Firma",
+        namePlaceholder: "Jan Kowal / Twoja firma",
+        emailLabel: "Twój adres e-mail",
+        emailPlaceholder: "jan@firma.pl",
+        textLabel: "Treść wiadomości (np. rola, lokalizacja, termin rozmowy)",
+        textPlaceholder: "Cześć! Szukamy osoby, która...",
+        submitBtn: "Wyślij wiadomość",
+        umamiEvent: "Formularz - Wyślij wiadomość",
+    },
+    en: {
+        heading: "Let's start with a message",
+        nameLabel: "Name and surname / Company",
+        namePlaceholder: "John Doe / Your company",
+        emailLabel: "Your email address",
+        emailPlaceholder: "john@company.com",
+        textLabel: "Message body (e.g. role, location, interview date)",
+        textPlaceholder: "Hi! We are looking for someone who...",
+        submitBtn: "Send message",
+        umamiEvent: "Form - Send message",
+    },
+};
+
+const t = content[lang];
 ---
 
 <form>
-    <h3>Zacznijmy od wiadomości</h3>
+    <h3>{t.heading}</h3>
 
     <div class="inputs-grid">
         <div class="field">
-            <label for="name">Imię i nazwisko / Firma</label>
+            <label for="name">{t.nameLabel}</label>
             <input
                 type="text"
                 id="name"
                 name="name"
-                placeholder="Jan Kowal / Twoja firma"
+                placeholder={t.namePlaceholder}
             />
         </div>
         <div class="field">
-            <label for="email">Twój adres e-mail</label>
+            <label for="email">{t.emailLabel}</label>
             <input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="jan@firma.pl"
+                placeholder={t.emailPlaceholder}
             />
         </div>
     </div>
 
     <div class="field">
-        <label for="text"
-            >Treść wiadomości (np. rola, lokalizacja, termin rozmowy)</label
-        >
-        <textarea
-            name="text"
-            id="text"
-            rows="4"
-            placeholder="Cześć! Szukamy osoby, która..."></textarea>
+        <label for="text">{t.textLabel}</label>
+        <textarea name="text" id="text" rows="4" placeholder={t.textPlaceholder}
+        ></textarea>
     </div>
 
-    <button type="submit" data-umami-event="Formularz - Przygotuj wiadomosc">
-        Wyślij wiadomość
+    <button type="submit" data-umami-event={t.umamiEvent}>
+        {t.submitBtn}
         <svg
             width="18"
             height="18"
