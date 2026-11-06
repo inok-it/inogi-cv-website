@@ -1,4 +1,6 @@
 ---
+import ChangeLang from "./ChangeLang.astro";
+
 const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith("/en") ? "en" : "pl";
 
@@ -67,7 +69,6 @@ const t = content[lang];
         </svg>
         {t.downloadCv}
     </button>
-
     <button
         type="button"
         aria-label={t.openMenuLabel}
@@ -105,6 +106,7 @@ const t = content[lang];
                 stroke="#e8eef6"></path>
         </svg>
     </button>
+    <ChangeLang />
 </div>
 
 <nav aria-label={t.navAria} class="mobile-nav-wrapper">
@@ -289,7 +291,7 @@ const t = content[lang];
         }
     }
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1200px) {
         .menu-btn {
             display: none;
         }

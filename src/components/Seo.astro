@@ -5,6 +5,7 @@ interface Props {
     canonicalUrl?: string;
     ogImage?: string;
     umamiWebsiteId?: string;
+    is404?: boolean;
 }
 
 const currentPath = Astro.url.pathname;
@@ -33,6 +34,7 @@ const {
     description = t.description,
     ogImage = "/og_image.png",
     umamiWebsiteId = "64b5cdab-2e61-46e0-8438-ad00c0ba212b",
+    is404 = false,
 } = Astro.props;
 
 const siteUrl = Astro.site ? Astro.site.origin : Astro.url.origin;
@@ -47,7 +49,7 @@ const enUrl = new URL(basePath === "/" ? "/en/" : `/en${basePath}`, siteUrl)
 const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    dateModified: "2026-10-22",
+    dateModified: "2026-11-06",
     mainEntity: {
         "@type": "Person",
         name: "Patryk Polak",
@@ -96,14 +98,25 @@ const jsonLd = {
 <!-- Podstawowe Meta Tagi -->
 <title>{title}</title>
 <meta name="description" content={description} />
-<link rel="canonical" href={canonicalUrl} />
+{!is404 && <link rel="canonical" href={canonicalUrl} />}
+
+<!-- Tagi hreflang dla internacjonalizacji -->
+{
+    !is404 && (
+        <>
+            <link rel="alternate" hreflang="pl" href={plUrl} />
+            <link rel="alternate" hreflang="en" href={enUrl} />
+            <link rel="alternate" hreflang="x-default" href={plUrl} />
+        </>
+    )
+}
 
 <!-- Tagi hreflang dla internacjonalizacji (Wymagane przez Google SEO) -->
 <link rel="alternate" hreflang="pl" href={plUrl} />
 <link rel="alternate" hreflang="en" href={enUrl} />
 <link rel="alternate" hreflang="x-default" href={plUrl} />
 
-<meta name="robots" content="index, follow" />
+<meta name="robots" content={is404 ? "noindex, nofollow" : "index, follow"} />
 <meta name="theme-color" content="#091020" />
 
 <!-- Open Graph / Facebook / LinkedIn -->
@@ -132,8 +145,11 @@ const jsonLd = {
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={absoluteOgImage} />
 
-<!-- Dane strukturalne JSON-LD -->
-<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<!-- Dane strukturalne JSON-LD (pomijane na stronie 404) -->{
+    !is404 && (
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )
+}
 <script
     is:inline
     defer

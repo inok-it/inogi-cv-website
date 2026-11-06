@@ -1,0 +1,45 @@
+---
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        text: "EN",
+        href: "/en",
+    },
+    en: {
+        text: "PL",
+        href: "/",
+    },
+};
+
+const t = content[lang];
+---
+
+<a href={t.href}>{t.text}</a>
+
+<style>
+    a {
+        display: flex;
+        align-items: center;
+        height: 3rem;
+        background: none;
+        border: 2px solid #202c3e;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 0.5rem 0.75rem;
+        font-weight: 500;
+        color: #e8eef6;
+        font-size: var(--text-base);
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        font-family: inherit;
+        line-height: 1;
+        text-decoration: none;
+    }
+    a:hover {
+        transform: translateY(-2px);
+        border-color: #7cc6fe;
+        background-color: rgba(124, 198, 254, 0.1);
+    }
+</style>

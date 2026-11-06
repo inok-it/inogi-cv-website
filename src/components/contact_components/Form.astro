@@ -203,6 +203,45 @@ const t = content[lang];
     }
 </style>
 
+<script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js"
+></script>
+
+<script type="text/javascript">
+    (function () {
+        emailjs.init({
+            publicKey: "YOUR_PUBLIC_KEY",
+            blockHeadless: true,
+            blockList: {
+                list: ["foo@emailjs.com", "bar@emailjs.com"],
+                watchVariable: "userEmail",
+            },
+            limitRate: {
+                id: "app",
+                throttle: 10000,
+            },
+        });
+    })();
+
+    const templateParams = {
+        name: "James",
+        notes: "Check this out!",
+    };
+
+    try {
+        await emailjs.sendForm(
+            "YOUR_SERVICE_ID",
+            "YOUR_TEMPLATE_ID",
+            "#myForm",
+        );
+
+        console.log("Email sent successfully");
+    } catch (error) {
+        console.error("Error sending email - ", error.text);
+    }
+</script>
+
 <script>
     const contactForm = document.querySelector<HTMLFormElement>(
         "#kontakt form, form",
