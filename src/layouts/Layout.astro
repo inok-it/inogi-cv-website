@@ -1,10 +1,13 @@
 ---
 import Font from "astro/components/Font.astro";
 import Seo from "../components/Seo.astro";
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/en") ? "en" : "pl";
 ---
 
 <!doctype html>
-<html lang="pl">
+<html lang={lang}>
 	<head>
 		<Seo />
 		<Font

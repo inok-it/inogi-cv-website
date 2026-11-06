@@ -7,9 +7,30 @@ interface Props {
     umamiWebsiteId?: string;
 }
 
+const currentPath = Astro.url.pathname;
+const isEn = currentPath.startsWith("/en");
+const lang = isEn ? "en" : "pl";
+
+const content = {
+    pl: {
+        title: "Patryk Polak — IT Support Specialist & Junior Linux / System Administrator (Wrocław / Opole / Zdalnie)",
+        description:
+            "Inżynier Informatyki i Technik Informatyk (E.12, E.13, E.14). Administracja serwerami Linux (Ubuntu, Debian, Docker, Ansible), wsparcie IT (Help Desk, Windows 10/11, AD/GPO, LAN/PXE), sieci (DNS, SPF/DKIM/DMARC) i monitoring.",
+        locale: "pl_PL",
+    },
+    en: {
+        title: "Patryk Polak — IT Support Specialist & Junior Linux / System Administrator (Wrocław / Opole / Remote)",
+        description:
+            "B.Eng. in Computer Science and IT Technician. Linux server administration (Ubuntu, Debian, Docker, Ansible), IT support (Help Desk, Windows 10/11, AD/GPO, LAN/PXE), networking (DNS, SPF/DKIM/DMARC) and monitoring.",
+        locale: "en_US",
+    },
+};
+
+const t = content[lang];
+
 const {
-    title = "Patryk Polak — IT Support Specialist & Junior Linux / System Administrator (Wrocław / Opole / Zdalnie)",
-    description = "Inżynier Informatyki i Technik Informatyk (E.12, E.13, E.14). Administracja serwerami Linux (Ubuntu, Debian, Docker, Ansible), wsparcie IT (Help Desk, Windows 10/11, AD/GPO, LAN/PXE), sieci (DNS, SPF/DKIM/DMARC) i monitoring.",
+    title = t.title,
+    description = t.description,
     ogImage = "/og_image.png",
     umamiWebsiteId = "64b5cdab-2e61-46e0-8438-ad00c0ba212b",
 } = Astro.props;
@@ -17,6 +38,11 @@ const {
 const siteUrl = Astro.site ? Astro.site.origin : Astro.url.origin;
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 const absoluteOgImage = new URL(ogImage, siteUrl).href;
+
+const basePath = isEn ? currentPath.replace(/^\/en/, "") || "/" : currentPath;
+const plUrl = new URL(basePath, siteUrl).href;
+const enUrl = new URL(basePath === "/" ? "/en/" : `/en${basePath}`, siteUrl)
+    .href;
 
 const jsonLd = {
     "@context": "https://schema.org",
@@ -71,12 +97,18 @@ const jsonLd = {
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
+
+<!-- Tagi hreflang dla internacjonalizacji (Wymagane przez Google SEO) -->
+<link rel="alternate" hreflang="pl" href={plUrl} />
+<link rel="alternate" hreflang="en" href={enUrl} />
+<link rel="alternate" hreflang="x-default" href={plUrl} />
+
 <meta name="robots" content="index, follow" />
 <meta name="theme-color" content="#091020" />
 
 <!-- Open Graph / Facebook / LinkedIn -->
 <meta property="og:type" content="profile" />
-<meta property="og:locale" content="pl_PL" />
+<meta property="og:locale" content={t.locale} />
 <meta property="og:url" content={canonicalUrl} />
 <meta
     property="og:site_name"
