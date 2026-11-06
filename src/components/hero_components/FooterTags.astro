@@ -1,3 +1,25 @@
+---
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        tag1: "Infrastruktura na lata",
+        tag2: "Bezpieczeństwo w standardzie",
+        tag3: "Automatyzacja rutyny",
+        scroll: "PRZEWIŃ NIŻEJ ↓",
+    },
+    en: {
+        tag1: "Infrastructure that lasts",
+        tag2: "Security by default",
+        tag3: "Automate the repetitive",
+        scroll: "SCROLL DOWN ↓",
+    },
+};
+
+const t = content[lang];
+---
+
 <div class="footer-tags-bar">
     <ul>
         <li>
@@ -40,7 +62,7 @@
                     </clipPath>
                 </defs>
             </svg>
-            Infrastructure that lasts
+            {t.tag1}
         </li>
         <li>
             <svg
@@ -63,7 +85,7 @@
                     stroke-linejoin="round"
                     stroke="#75869F"></path>
             </svg>
-            Security by default
+            {t.tag2}
         </li>
         <li>
             <svg
@@ -86,10 +108,10 @@
                     stroke-linejoin="round"
                     stroke="#75869F"></path>
             </svg>
-            Automate the repetitive
+            {t.tag3}
         </li>
     </ul>
-    <span class="scroll-hint">PRZEWIŃ NIŻEJ ↓</span>
+    <span class="scroll-hint">{t.scroll}</span>
 </div>
 
 <style>

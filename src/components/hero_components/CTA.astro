@@ -1,6 +1,24 @@
+---
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        primaryBtn: "Zobacz wdrożenia i Homelab",
+        secondaryBtn: "Pobierz CV",
+    },
+    en: {
+        primaryBtn: "See deployments & Homelab",
+        secondaryBtn: "Download CV",
+    },
+};
+
+const t = content[lang];
+---
+
 <div>
-    <a href="#homelab" data-umami-event="Hero - Zobacz Homelab">
-        Zobacz wdrożenia i Homelab&ensp;<svg
+    <a href="#homelab" data-umami-event={`Hero - ${t.primaryBtn}`}>
+        {t.primaryBtn}&ensp;<svg
             width="18"
             height="18"
             viewBox="0 0 18 18"
@@ -25,8 +43,9 @@
         data-download-cv
         type="button"
         class="card-hover"
-        data-umami-event="Pobranie-CV-PDF"
-        ><svg
+        data-umami-event={`Hero - ${t.secondaryBtn}`}
+    >
+        <svg
             width="18"
             height="18"
             viewBox="0 0 18 18"
@@ -52,8 +71,8 @@
                 stroke-linejoin="round"
                 stroke="#E8EEF6"></path>
         </svg>
-        Pobierz CV</button
-    >
+        {t.secondaryBtn}
+    </button>
 </div>
 
 <style>

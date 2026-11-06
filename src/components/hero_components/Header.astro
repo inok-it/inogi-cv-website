@@ -1,7 +1,27 @@
+---
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        line1: "Stabilny Linux.",
+        line2: "Sprawne wsparcie IT.",
+        line3: "Pełna kontrola nad infrastrukturą.",
+    },
+    en: {
+        line1: "Stable Linux.",
+        line2: "Efficient IT support.",
+        line3: "Full control over infrastructure.",
+    },
+};
+
+const t = content[lang];
+---
+
 <h1 id="heading-hero">
-    Stabilny Linux.<br />
-    Sprawne wsparcie IT.<br />
-    <span>Pełna kontrola nad infrastrukturą.</span>
+    {t.line1}<br />
+    {t.line2}<br />
+    <span>{t.line3}</span>
 </h1>
 
 <style>

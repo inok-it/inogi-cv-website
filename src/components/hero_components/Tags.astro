@@ -1,6 +1,21 @@
+---
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        text: "✓ Inż. Informatyki · ✓ 100% dyspozycyjności · ✓ Linux, Windows/AD, Sieci i ERP",
+    },
+    en: {
+        text: "✓ B.Eng. in Computer Science · ✓ 100% availability · ✓ Linux, Windows/AD, Networks & ERP",
+    },
+};
+
+const t = content[lang];
+---
+
 <p class="tags">
-    ✓ Inż. Informatyki · ✓ 100% dyspozycyjności · ✓ Linux, Windows/AD, Sieci i
-    ERP
+    {t.text}
 </p>
 
 <style>

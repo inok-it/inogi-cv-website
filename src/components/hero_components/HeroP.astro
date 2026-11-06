@@ -1,8 +1,21 @@
+---
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        text: "Łączę praktyczną administrację serwerami Linux (Ubuntu/Debian, Docker, Ansible, hardening 83/100 w Lynis) z codziennym wsparciem użytkowników, diagnostyką sieci (DNS, LAN/PXE), poczty (SPF, DKIM, DMARC) oraz systemów Windows 10/11, Active Directory i ERP.",
+    },
+    en: {
+        text: "I combine practical Linux server administration (Ubuntu/Debian, Docker, Ansible, 83/100 hardening score in Lynis) with daily user support, network (DNS, LAN/PXE) and email (SPF, DKIM, DMARC) diagnostics, as well as Windows 10/11, Active Directory, and ERP systems management.",
+    },
+};
+
+const t = content[lang];
+---
+
 <p>
-    Łączę praktyczną administrację serwerami Linux (Ubuntu/Debian, Docker,
-    Ansible, hardening 83/100 w Lynis) z codziennym wsparciem użytkowników,
-    diagnostyką sieci (DNS, LAN/PXE), poczty (SPF, DKIM, DMARC) oraz systemów
-    Windows 10/11, Active Directory i ERP.
+    {t.text}
 </p>
 
 <style>

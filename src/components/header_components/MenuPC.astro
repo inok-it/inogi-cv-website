@@ -1,22 +1,44 @@
 ---
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/en") ? "en" : "pl";
 
+const content = {
+    pl: {
+        navAria: "Główna nawigacja",
+        items: [
+            { label: "Kompetencje", id: "kompetencje" },
+            { label: "Homelab & Projekty", id: "homelab" },
+            { label: "Stack", id: "stack" },
+            { label: "Doświadczenie", id: "doswiadczenie" },
+            { label: "Kontakt", id: "kontakt" },
+        ],
+    },
+    en: {
+        navAria: "Main navigation",
+        items: [
+            { label: "Skills", id: "skills" },
+            { label: "Homelab & Projects", id: "homelab" },
+            { label: "Stack", id: "stack" },
+            { label: "Experience", id: "experience" },
+            { label: "Contact", id: "contact" },
+        ],
+    },
+};
+
+const t = content[lang];
 ---
 
-<nav aria-label="Główna nawigacja" class="nav-pc">
+<nav aria-label={t.navAria} class="nav-pc">
     <ul class="menu-pc">
-        <li>
-            <a href="#kompetencje" data-section="kompetencje">Kompetencje</a>
-        </li>
-        <li>
-            <a href="#homelab" data-section="homelab">Homelab & Projekty</a>
-        </li>
-        <li><a href="#stack" data-section="stack">Stack</a></li>
-        <li>
-            <a href="#doswiadczenie" data-section="doswiadczenie"
-                >Doświadczenie</a
-            >
-        </li>
-        <li><a href="#kontakt" data-section="kontakt">Kontakt</a></li>
+        {
+            t.items.map((item) => (
+                <li>
+                    <a href={`#${item.id}`} data-section={item.id}>
+                        {item.label}
+                    </a>
+                </li>
+            ))
+        }
     </ul>
 </nav>
 

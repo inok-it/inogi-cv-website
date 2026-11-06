@@ -1,12 +1,42 @@
 ---
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/en") ? "en" : "pl";
 
+const content = {
+    pl: {
+        downloadCv: "Pobierz CV",
+        openMenuLabel: "Otwórz menu nawigacji",
+        navAria: "Główna nawigacja",
+        items: [
+            { label: "Kompetencje", id: "kompetencje" },
+            { label: "Homelab & Projekty", id: "homelab" },
+            { label: "Stack technologiczny", id: "stack" },
+            { label: "Doświadczenie", id: "doswiadczenie" },
+            { label: "Kontakt", id: "kontakt" },
+        ],
+    },
+    en: {
+        downloadCv: "Download CV",
+        openMenuLabel: "Open navigation menu",
+        navAria: "Main navigation",
+        items: [
+            { label: "Skills", id: "skills" },
+            { label: "Homelab & Projects", id: "homelab" },
+            { label: "Tech Stack", id: "stack" },
+            { label: "Experience", id: "experience" },
+            { label: "Contact", id: "contact" },
+        ],
+    },
+};
+
+const t = content[lang];
 ---
 
 <div class="button-wrapper">
     <button
         type="button"
         class="download-btn hide-download-btn-less-than-500px"
-        data-umami-event="Header - Pobierz CV"
+        data-umami-event={`Header - ${t.downloadCv}`}
         data-download-cv
     >
         <svg
@@ -34,16 +64,18 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke="#E8EEF6"></path>
-        </svg> Pobierz CV
+        </svg>
+        {t.downloadCv}
     </button>
+
     <button
         type="button"
-        aria-label="Otwórz menu nawigacji"
+        aria-label={t.openMenuLabel}
         aria-expanded="false"
         aria-controls="mobile-nav-list"
         class="menu-btn"
     >
-        <span class="sr-only">Otwórz menu nawigacji</span>
+        <span class="sr-only">{t.openMenuLabel}</span>
         <svg
             aria-hidden="true"
             focusable="false"
@@ -75,21 +107,21 @@
     </button>
 </div>
 
-<nav aria-label="Główna nawigacja" class="mobile-nav-wrapper">
+<nav aria-label={t.navAria} class="mobile-nav-wrapper">
     <ul id="mobile-nav-list" class="menu-mobile">
-        <li><a href="#kompetencje">Kompetencje</a></li>
-        <li>
-            <a href="#homelab">Homelab & Projekty</a>
-        </li>
-        <li><a href="#stack">Stack technologiczny</a></li>
-        <li><a href="#doswiadczenie">Doświadczenie</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
+        {
+            t.items.map((item) => (
+                <li>
+                    <a href={`#${item.id}`}>{item.label}</a>
+                </li>
+            ))
+        }
         <li>
             <button
                 type="button"
                 data-download-cv
                 class="download-btn hide-download-btn-more-than-500px"
-                data-umami-event="Mobile Menu - Pobierz CV"
+                data-umami-event={`Mobile Menu - ${t.downloadCv}`}
             >
                 <svg
                     aria-hidden="true"
@@ -118,7 +150,7 @@
                         stroke-linejoin="round"
                         stroke="#E8EEF6"></path>
                 </svg>
-                Pobierz CV
+                {t.downloadCv}
             </button>
         </li>
     </ul>

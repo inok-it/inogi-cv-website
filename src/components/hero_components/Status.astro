@@ -1,7 +1,23 @@
+---
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        text: "Dostępny od zaraz · Wrocław / Opole / Hybrydowo / Zdalnie",
+    },
+    en: {
+        text: "Available immediately · Wrocław / Opole / Hybrid / Remote",
+    },
+};
+
+const t = content[lang];
+---
+
 <div class="status-wrapper">
     <div class="status-indicator"></div>
     <p class="status-text">
-        Dostępny od zaraz · Wrocław / Opole / Hybrydowo / Zdalnie
+        {t.text}
     </p>
 </div>
 

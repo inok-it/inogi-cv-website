@@ -1,9 +1,25 @@
 ---
 import Image from "astro/components/Image.astro";
 import LogoImg from "../../assets/Inogi_logo_DARK_BG.svg";
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        ariaLabel: "INOGI — Strona główna",
+        href: "#o-mnie",
+    },
+    en: {
+        ariaLabel: "INOGI — Homepage",
+        href: "#about-me",
+    },
+};
+
+const t = content[lang];
 ---
 
-<a href="#o-mnie" class="logo" aria-label="INOGI — Strona główna">
+<a href={t.href} class="logo" aria-label={t.ariaLabel}>
     <div class="logo">
         <Image src={LogoImg} alt="" class="logo-img" loading={"eager"} />
         <div class="logo-text">
