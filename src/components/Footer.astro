@@ -1,9 +1,34 @@
+---
+const currentPath = Astro.url.pathname;
+const lang: "pl" | "en" = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        copyright: "© 2026 INOGI. Built with purpose. Secured by default.",
+        status: "Gotowy na kolejne wyzwanie",
+        backToTop: "Powrót na górę",
+        heroId: "#o-mnie",
+        umamiEvent: "Footer - Powrót na górę",
+    },
+    en: {
+        copyright: "© 2026 INOGI. Built with purpose. Secured by default.",
+        status: "Ready for the next challenge",
+        backToTop: "Back to top",
+        heroId: "#about-me",
+        umamiEvent: "Footer - Back to top",
+    },
+};
+
+const t = content[lang];
+---
+
 <footer>
     <div class="footer-container">
-        <p>© 2026 INOGI. Built with purpose. Secured by default.</p>
-        <p><span class="footer-circle"></span>Gotowy na kolejne wyzwanie</p>
-        <a href="#o-mnie" data-umami-event="Footer - Powrot na gore"
-            >Powrót na górę<svg
+        <p>{t.copyright}</p>
+        <p><span class="footer-circle"></span>{t.status}</p>
+        <a href={t.heroId} data-umami-event={t.umamiEvent}>
+            {t.backToTop}
+            <svg
                 width="12"
                 height="12"
                 viewBox="0 0 12 12"
