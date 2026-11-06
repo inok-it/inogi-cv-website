@@ -1,16 +1,90 @@
 ---
 import Proof from "./homelab_components/Proof.astro";
+
+const currentPath = Astro.url.pathname;
+const lang: "pl" | "en" = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        sectionId: "homelab",
+        chapter: "02 / PROOF OF WORK",
+        title: "Mniej deklaracji. Więcej wdrożeń.",
+        subtitle:
+            "Mój homelab to miejsce, w którym teoria spotyka rzeczywiste problemy.",
+        proof1: {
+            title: "Automatyzacja i Hardening",
+            newLineTitle: "Infrastruktury Linux VPS (IaC)",
+            challenge:
+                "ręczna konfiguracja publicznego VPS i ekspozycja usług.",
+            solution:
+                "9-modułowe repozytorium runbooków i playbooków Ansible (zgodnych z ansible-lint) stawiające utwardzony serwer Ubuntu LTS w mniej niż 3h. Wynik 83/100 pkt w audycie Lynis, SSH Key-Only (FIDO2/YubiKey), Traefik + Authentik SSO i redukcja ruchu botów o ~99% przez Cloudflare WAF.",
+            githubLabel: "Zobacz Runbooki i kod na GitHub ->",
+        },
+        proof2: {
+            title: "Izolowane Środowisko",
+            newLineTitle: "Produkcyjne dla Usług Webowych (Single-Tenant)",
+            challenge:
+                "wąskie gardła wydajności, izolacja usług i ochrona danych.",
+            solution:
+                "Odseparowane kontenery aplikacyjne, MariaDB i Redis za reverse proxy Traefik. Czterowarstwowy cache (Edge, Page, Redis, OPCache), sekrety SMTP poza bazą danych oraz automatyczne kopie zapasowe 3-2-1 do pamięci obiektowej Cloudflare R2 z testami odtwarzania.",
+            githubLabel: "Zobacz Runbooki i kod na GitHub ->",
+        },
+        proof3: {
+            title: "Diagnostyka CLI, Skrypty",
+            newLineTitle: "Utrzymaniowe Bash i Obsługa Incydentów",
+            challenge:
+                "ręczna diagnostyka, ryzyko cichych awarii i błędów ludzkich.",
+            solution:
+                "Zestaw procedur operacyjnych (SOP) i skryptów Bash/Cron automatyzujących szyfrowane zrzuty baz danych, weryfikację integralności plików (Debsums, Rkhunter), analizę logów systemd/journalctl oraz natychmiastowe alerty push o awariach.",
+            githubLabel: "Zobacz Runbooki i kod na GitHub ->",
+        },
+    },
+    en: {
+        sectionId: "homelab",
+        chapter: "02 / PROOF OF WORK",
+        title: "Fewer declarations. More deployments.",
+        subtitle: "My homelab is where theory meets real-world problems.",
+        proof1: {
+            title: "Automation & Hardening",
+            newLineTitle: "of Linux VPS Infrastructure (IaC)",
+            challenge:
+                "manual configuration of a public VPS and service exposure.",
+            solution:
+                "A 9-module repository of Ansible runbooks and playbooks (ansible-lint compliant) that provisions a hardened Ubuntu LTS server in under 3 hours. Lynis audit score of 83/100, SSH Key-Only (FIDO2/YubiKey), Traefik + Authentik SSO, and ~99% bot traffic reduction via Cloudflare WAF.",
+            githubLabel: "View Runbooks and code on GitHub ->",
+        },
+        proof2: {
+            title: "Isolated Production",
+            newLineTitle: "Environment for Web Services (Single-Tenant)",
+            challenge:
+                "performance bottlenecks, service isolation, and data protection.",
+            solution:
+                "Separated application containers, MariaDB, and Redis behind a Traefik reverse proxy. Four-layer cache (Edge, Page, Redis, OPCache), SMTP secrets stored outside the database, and automated 3-2-1 backups to Cloudflare R2 object storage with recovery tests.",
+            githubLabel: "View Runbooks and code on GitHub ->",
+        },
+        proof3: {
+            title: "CLI Diagnostics, Bash",
+            newLineTitle: "Maintenance Scripts & Incident Response",
+            challenge:
+                "manual diagnostics, risk of silent failures, and human errors.",
+            solution:
+                "A set of Standard Operating Procedures (SOPs) and Bash/Cron scripts automating encrypted database dumps, file integrity verification (Debsums, Rkhunter), systemd/journalctl log analysis, and instant push failure alerts.",
+            githubLabel: "View Runbooks and code on GitHub ->",
+        },
+    },
+};
+
+const t = content[lang];
 ---
 
-<section id="homelab" aria-labelledby="heading-homelab">
+<section id={t.sectionId} aria-labelledby="heading-homelab">
     <div class="homelab-wrapper">
         <div class="section-header">
             <div class="header-titles">
-                <p class="chapter">02&ensp;/&ensp;PROOF&ensp;OF&ensp;WORK</p>
-                <h2 id="heading-homelab">Mniej deklaracji. Więcej wdrożeń.</h2>
+                <p class="chapter">{t.chapter}</p>
+                <h2 id="heading-homelab">{t.title}</h2>
                 <p class="subtitle">
-                    Mój homelab to miejsce, w którym teoria spotyka rzeczywiste
-                    problemy.
+                    {t.subtitle}
                 </p>
             </div>
         </div>
@@ -18,13 +92,13 @@ import Proof from "./homelab_components/Proof.astro";
         <div class="list-of-proofs">
             <Proof
                 headerTags={["LINUX", "ANSIBLE", "SECURITY"]}
-                title="Automatyzacja i Hardening"
-                newLineTitle="Infrastruktury Linux VPS (IaC)"
-                challenge="ręczna konfiguracja publicznego VPS i ekspozycja usług."
-                solution="9-modułowe repozytorium runbooków i playbooków Ansible (zgodnych z ansible-lint) stawiające utwardzony serwer Ubuntu LTS w mniej niż 3h. Wynik 83/100 pkt w audycie Lynis, SSH Key-Only (FIDO2/YubiKey), Traefik + Authentik SSO i redukcja ruchu botów o ~99% przez Cloudflare WAF."
+                title={t.proof1.title}
+                newLineTitle={t.proof1.newLineTitle}
+                challenge={t.proof1.challenge}
+                solution={t.proof1.solution}
                 tags={["Ansible", "Ubuntu LTS", "Traefik", "Cloudflare WAF"]}
                 githubUrl="https://github.com/inok-it/vps-linux-hardening-paas"
-                githubLabel="Zobacz Runbooki i kod na GitHub ->"
+                githubLabel={t.proof1.githubLabel}
                 headerType="no-code"
                 statusTag="INFRASTRUCTURE"
                 lab="LAB_01"
@@ -32,13 +106,13 @@ import Proof from "./homelab_components/Proof.astro";
             />
             <Proof
                 headerTags={["CONTAINERS", "CACHE", "BACKUP 3-2-1"]}
-                title="Izolowane Środowisko"
-                newLineTitle="Produkcyjne dla Usług Webowych (Single-Tenant)"
-                challenge="wąskie gardła wydajności, izolacja usług i ochrona danych."
-                solution="Odseparowane kontenery aplikacyjne, MariaDB i Redis za reverse proxy Traefik. Czterowarstwowy cache (Edge, Page, Redis, OPCache), sekrety SMTP poza bazą danych oraz automatyczne kopie zapasowe 3-2-1 do pamięci obiektowej Cloudflare R2 z testami odtwarzania."
+                title={t.proof2.title}
+                newLineTitle={t.proof2.newLineTitle}
+                challenge={t.proof2.challenge}
+                solution={t.proof2.solution}
                 tags={["Docker", "MariaDB", "Redis", "Cloudflare R2"]}
                 githubUrl="https://github.com/inok-it/woocommerce-self-hosted-security-cloudflare"
-                githubLabel="Zobacz Runbooki i kod na GitHub ->"
+                githubLabel={t.proof2.githubLabel}
                 headerType="no-code"
                 statusTag="SINGLE-TENANT"
                 lab="LAB_02"
@@ -46,13 +120,13 @@ import Proof from "./homelab_components/Proof.astro";
             />
             <Proof
                 headerTags={["BASH", "DIAGNOSTICS", "OPERATIONS"]}
-                title="Diagnostyka CLI, Skrypty"
-                newLineTitle="Utrzymaniowe Bash i Obsługa Incydentów"
-                challenge="ręczna diagnostyka, ryzyko cichych awarii i błędów ludzkich."
-                solution="Zestaw procedur operacyjnych (SOP) i skryptów Bash/Cron automatyzujących szyfrowane zrzuty baz danych, weryfikację integralności plików (Debsums, Rkhunter), analizę logów systemd/journalctl oraz natychmiastowe alerty push o awariach."
+                title={t.proof3.title}
+                newLineTitle={t.proof3.newLineTitle}
+                challenge={t.proof3.challenge}
+                solution={t.proof3.solution}
                 tags={["Bash / Cron", "journalctl", "Rkhunter", "ntfy"]}
                 githubUrl="https://github.com/inok-it/vps-linux-hardening-paas"
-                githubLabel="Zobacz Runbooki i kod na GitHub ->"
+                githubLabel={t.proof3.githubLabel}
                 headerType="code"
                 statusTag="AUTOMATION"
                 lab="LAB_03"

@@ -17,6 +17,24 @@ interface Props {
     githubLabel?: string;
 }
 
+const currentPath = Astro.url.pathname;
+const lang: "pl" | "en" = currentPath.startsWith("/en") ? "en" : "pl";
+
+const content = {
+    pl: {
+        challengeLabel: "Wyzwanie: ",
+        solutionLabel: "Rozwiązanie: ",
+        defaultGithubLabel: "Zobacz Runbooki i kod na GitHub ->",
+    },
+    en: {
+        challengeLabel: "Challenge: ",
+        solutionLabel: "Solution: ",
+        defaultGithubLabel: "View Runbooks and code on GitHub ->",
+    },
+};
+
+const t = content[lang];
+
 const {
     headerTags,
     title,
@@ -29,7 +47,7 @@ const {
     lab,
     iconSet,
     githubUrl,
-    githubLabel = "Zobacz Runbooki i kod na GitHub ->",
+    githubLabel = t.defaultGithubLabel,
 } = Astro.props;
 ---
 
@@ -48,8 +66,8 @@ const {
         </p>
         <h3>{title}<br /> {newLineTitle}</h3>
         <p class="solution">
-            <span class="bolder">Wyzwanie: </span>{challenge}<br />
-            <span class="bolder">Rozwiązanie: </span>{solution}
+            <span class="bolder">{t.challengeLabel}</span>{challenge}<br />
+            <span class="bolder">{t.solutionLabel}</span>{solution}
         </p>
         <ul class="tags-homelab">
             {tags.map((tag) => <li class="tag-homelab">{tag}</li>)}
